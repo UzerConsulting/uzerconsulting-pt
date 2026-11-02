@@ -1,0 +1,1403 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<script>window.SCENES = !matchMedia('(prefers-reduced-motion: reduce)').matches;</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UZER Consulting</title>
+<meta name="description" content="UZER Consulting: consultoria de estratégia, customer experience e visibilidade em IA. Criadores do AIR (AI Readiness Score). Estoril, Portugal.">
+<meta property="og:title" content="UZER Consulting">
+<meta property="og:description" content="Reinventamos a experiência do cliente com estratégia, dados e presença nas respostas da IA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://uzerconsulting.pt/">
+<meta name="theme-color" content="#050506">
+<link rel="icon" href="assets/uzer-logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: página única em fundo preto; navegação em vidro fosco com botão "AIR Framework";
+   hero com o "Z" do logótipo em gradiente de marca (capa LinkedIn: ardósia → azul elétrico → ciano);
+   secções em grelha de 12 colunas, cartões escuros com fio fino; a única cor é o gradiente. */
+:root{
+  --bg:#050506; --bg-2:#0B0B0E; --card:#0F0F13; --card-2:#15151B; --hair:rgba(255,255,255,.08); --hair-2:rgba(255,255,255,.14);
+  --text:#F5F5F7; --text-2:#A3A3AD; --text-3:#6E6E78;
+  --g1:#262C3A; --g2:#3322FF; --g3:#1A8CFF; --g4:#00E1FF;
+  --grad:linear-gradient(120deg,var(--g2) 0%,var(--g3) 55%,var(--g4) 100%);
+  --neon:#7A66FF; --neon-glow:rgba(122,102,255,.55);
+  --font:"Geist",ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --maxw:1200px; --r:20px;
+  --shadow:0 1px 2px rgba(0,0,0,.6), 0 24px 60px -24px rgba(0,0,0,.95), 0 10px 40px -20px rgba(40,60,140,.28);
+  --shadow-hi:0 1px 2px rgba(0,0,0,.6), 0 34px 80px -24px rgba(0,0,0,1), 0 16px 60px -20px rgba(40,90,200,.38);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--g4);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:24px}
+@media (max-width:600px){.wrap{padding-inline:16px}}
+.logo{display:block;color:#fff}.logo svg{display:block;height:100%;width:auto}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-text.cloud{background-image:
+    radial-gradient(38% 58% at 22% 38%,rgba(0,225,255,.95),transparent 72%),
+    radial-gradient(46% 70% at 74% 62%,rgba(51,34,255,.95),transparent 72%),
+    radial-gradient(34% 52% at 52% 18%,rgba(26,140,255,.9),transparent 70%),
+    linear-gradient(120deg,var(--g2),var(--g3) 55%,var(--g4));
+  background-size:230% 230%,240% 240%,260% 260%,100% 100%;background-position:30% 40%,70% 60%,50% 30%,0 0;
+  transition:background-position 2.8s cubic-bezier(.45,.05,.55,.95)}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);transition:background .25s,box-shadow .25s}
+.nav.scrolled{background:rgba(5,5,6,.72);backdrop-filter:saturate(150%) blur(16px);-webkit-backdrop-filter:saturate(150%) blur(16px);box-shadow:0 10px 40px -10px rgba(0,0,0,.9)}
+/* sobre o Método em branco a barra fica preta sólida: o vidro escuro sobre branco fica cinzento baço */
+.nav.solid{background:#050506;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:0 12px 32px -14px rgba(0,0,0,.55)}
+.nav-in{display:flex;align-items:center;gap:28px;height:72px}
+.nav .logo{height:24px}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--text-2)}
+.nav-links a:hover{color:var(--text)}
+@media (max-width:860px){.nav-links{display:none}}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;font-weight:600;font-size:14px;padding:11px 20px;transition:transform .15s, box-shadow .2s, background .2s, border-color .2s;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-air{position:relative;color:#fff;background:#0A0A0D;border:1px solid transparent;background-clip:padding-box;isolation:isolate}
+.btn-air::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:var(--grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1}
+.btn-air:hover{box-shadow:0 0 0 4px rgba(26,140,255,.14),0 10px 30px -8px rgba(51,34,255,.6)}
+.btn-air .dot{width:7px;height:7px;border-radius:50%;background:var(--g4);box-shadow:0 0 10px var(--g4)}
+.btn-white{background:#fff;color:#0A0A0D}
+.btn-white:hover{background:#E8E8EE}
+.btn-ghost{background:rgba(255,255,255,.06);color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.6),0 10px 28px -14px rgba(0,0,0,.95)}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+.nav .btn{padding:9px 16px;margin-left:8px}
+@media (max-width:860px){.nav .btn{margin-left:auto}}
+
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:center;padding-block:130px 90px;overflow-x:clip}
+.hero-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent)}
+.hero-bg::before{content:"";position:absolute;width:900px;height:900px;right:-240px;top:-220px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(51,34,255,.55),rgba(26,140,255,.25) 45%,transparent 72%);filter:blur(20px);animation:drift 18s ease-in-out infinite alternate}
+.hero-bg::after{content:"";position:absolute;width:620px;height:620px;right:8%;bottom:-320px;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(0,225,255,.32),transparent 70%);filter:blur(30px);animation:drift 22s ease-in-out infinite alternate-reverse}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(-60px,40px)}}
+.zwrap{position:absolute;right:max(-40px,calc(50% - 700px));top:50%;width:min(560px,55vw);aspect-ratio:1410/1290;transform:translateY(-50%);pointer-events:none}
+.bigz{display:block;width:100%;height:100%;overflow:visible;opacity:calc(.55 * var(--zfade,1))}
+@media (max-width:900px){.zwrap{right:-80px;width:90vw}.bigz{opacity:calc(.35 * var(--zfade,1))}}
+main>section:not(.hero),footer{position:relative;z-index:3;background:var(--bg)}
+main>.divider{position:relative;z-index:4}
+.grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-2);border-radius:999px;padding:7px 15px;background:rgba(255,255,255,.05);box-shadow:0 8px 24px -8px rgba(0,0,0,.8)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--g4);box-shadow:0 0 12px var(--g4)}
+.hero h1{margin:0 0 22px;font-size:clamp(40px,7vw,86px);line-height:1.02;letter-spacing:-.045em;font-weight:600;max-width:13ch;text-wrap:balance}
+.hero p.lead{margin:0;max-width:56ch;color:var(--text-2);font-size:clamp(17px,1.5vw,19px);line-height:1.6}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:36px}
+.hero-ctas .btn{padding:14px 24px;font-size:15px}
+.hero-meta{display:flex;gap:34px;flex-wrap:wrap;margin-top:64px;color:var(--text-3);font-size:13px}
+.hero-meta b{display:block;color:var(--text);font-family:var(--mono);font-weight:500;font-size:22px;letter-spacing:-.02em;margin-bottom:2px}
+
+/* secções */
+section{position:relative}
+.sec{padding-block:120px}
+@media (max-width:700px){.sec{padding-block:80px}}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:56px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:18px}}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:14px}
+h2{margin:0;font-size:clamp(30px,4.2vw,52px);line-height:1.06;letter-spacing:-.035em;font-weight:600;text-wrap:balance}
+.sec-head p{margin:0;color:var(--text-2);font-size:17px;max-width:52ch}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--hair-2),transparent)}
+
+/* serviços */
+.services{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.services{grid-template-columns:1fr}}
+.svc{position:relative;background:linear-gradient(180deg,#131318,#0C0C10);border-radius:var(--r);padding:30px 30px 28px;overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .3s, transform .3s}
+.svc:hover{box-shadow:var(--shadow-hi);transform:translateY(-3px)}
+.svc::after{content:"";position:absolute;inset:auto -40% -60% auto;width:320px;height:320px;border-radius:50%;background:radial-gradient(closest-side,rgba(51,34,255,.18),transparent);opacity:0;transition:opacity .3s}
+.svc:hover::after{opacity:1}
+.svc .num{font-family:var(--mono);font-size:12px;color:var(--text-3)}
+.svc h3{margin:18px 0 10px;font-size:22px;letter-spacing:-.02em;font-weight:600}
+.svc p{margin:0;color:var(--text-2);font-size:15px}
+.svc ul{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:6px}
+.svc li{font-size:12.5px;color:var(--text-2);background:rgba(255,255,255,.06);border-radius:999px;padding:4px 11px}
+.svc.feature{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;padding:40px}
+@media (max-width:900px){.svc.feature{grid-template-columns:1fr;padding:30px}}
+.svc.feature{box-shadow:var(--shadow), 0 40px 120px -40px rgba(51,34,255,.45)}
+.svc.feature:hover{box-shadow:var(--shadow-hi), 0 40px 120px -30px rgba(51,34,255,.6)}
+.tag-new{display:inline-flex;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:rgba(0,225,255,.1);color:#7DEBFF;margin-left:10px;vertical-align:middle}
+
+/* mini-framework (pré-visualização AIR): só preto, branco e roxo néon */
+.air-mini{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.pill{position:relative;overflow:hidden;background:linear-gradient(180deg,#131318,#08080B);color:var(--text);border-radius:14px;padding:16px 14px 12px;box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 18px 40px -16px rgba(0,0,0,.95)}
+.pill::before{content:"";position:absolute;left:14px;right:14px;top:0;height:2px;border-radius:2px;background:var(--neon);box-shadow:0 0 10px var(--neon),0 0 26px var(--neon-glow)}
+.pill h4{margin:0 0 10px;font-size:11px;letter-spacing:.08em;color:#fff;font-weight:600}
+.pill .row{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:10.5px;color:var(--text-2)}
+.pill .row b{font-family:var(--mono);font-size:9.5px;font-weight:500;color:#fff;background:rgba(122,102,255,.28);box-shadow:0 0 10px -2px var(--neon-glow);border-radius:4px;padding:1px 4px;min-width:24px;text-align:center}
+.pill .row span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pill .row i{width:7px;height:7px;border-radius:50%;flex:0 0 auto;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.pill .row i.g{background:var(--neon);box-shadow:0 0 8px var(--neon-glow)}
+.pill .row i.y{background:rgba(255,255,255,.7);box-shadow:none}
+.formula{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--text-2);text-align:center}
+.legend{display:flex;justify-content:center;gap:16px;margin-top:8px;font-family:var(--mono);font-size:11px;color:var(--text-3)}
+.legend i{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:6px;vertical-align:1px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+.legend i.g{background:var(--neon);box-shadow:0 0 8px var(--neon-glow)}.legend i.y{background:rgba(255,255,255,.7);box-shadow:none}
+#air .tag-new{background:rgba(122,102,255,.14);color:#C4B9FF;box-shadow:0 0 18px -4px var(--neon-glow)}
+#air .btn-air::before{background:var(--neon)}
+#air .btn-air:hover{box-shadow:0 0 0 4px rgba(122,102,255,.16),0 10px 30px -8px var(--neon-glow)}
+@media (max-width:520px){.air-mini{grid-template-columns:1fr}}
+
+/* método */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{padding:26px 24px 28px;border-radius:var(--r);background:linear-gradient(180deg,#131318,#0C0C10);box-shadow:var(--shadow)}
+.step .n{font-family:var(--mono);font-size:13px}
+.step h3{margin:14px 0 8px;font-size:19px;font-weight:600;letter-spacing:-.015em}
+.step p{margin:0;color:var(--text-2);font-size:14.5px}
+
+/* talk2me */
+.t2m{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:860px){.t2m{grid-template-columns:1fr}}
+.quotes{display:flex;flex-direction:column;gap:12px}
+.quote{border-radius:16px;padding:20px 22px;background:linear-gradient(180deg,#131318,#0C0C10);box-shadow:var(--shadow)}
+.quote p{margin:0 0 10px;font-size:17px;line-height:1.45;letter-spacing:-.01em}
+.quote cite{display:inline-block;font-style:normal;font-family:var(--mono);font-size:12px;color:var(--text-3)}
+
+/* equipa */
+.team{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:48px;align-items:center}
+@media (max-width:860px){.team{grid-template-columns:1fr}}
+.photo{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;max-width:100%;background:var(--card);box-shadow:var(--shadow-hi)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(5,5,6,.65))}
+.people{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.person{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:15px 20px;border-radius:14px;background:linear-gradient(180deg,#131318,#0C0C10);box-shadow:var(--shadow)}
+.person b{font-weight:500;font-size:18px;letter-spacing:-.01em}
+.person span{font-family:var(--mono);font-size:12px;color:var(--text-3)}
+
+/* CTA final + footer */
+.cta{position:relative;border-radius:28px;padding:72px 48px;overflow:hidden;text-align:center;background:#0C0C10;box-shadow:var(--shadow-hi), 0 50px 140px -50px rgba(51,34,255,.5)}
+@media (max-width:600px){.cta{padding:52px 22px}}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 50% 120%,rgba(51,34,255,.5),transparent 70%),radial-gradient(500px 240px at 80% -20%,rgba(0,225,255,.22),transparent 70%)}
+.cta>*{position:relative}
+.cta h2{max-width:18ch;margin:0 auto}
+.cta p{color:var(--text-2);max-width:52ch;margin:18px auto 0}
+.cta .hero-ctas{justify-content:center}
+footer{padding-block:48px 56px;color:var(--text-3);font-size:13px}
+.foot{display:flex;gap:24px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;padding-top:16px}
+.foot .logo{height:20px;margin-bottom:12px}
+.foot a:hover{color:var(--text)}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+
+/* entrada suave (estado de repouso visível) */
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.rise.d1{animation-delay:.08s}.rise.d2{animation-delay:.16s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.32s}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+/* cursor: seta branca de cantos arredondados, na direção normal e um pouco maior; um pouco maior ainda sobre links e botões */
+html{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M5.00 3.00 L5.00 22.00 L10.00 17.50 L13.50 25.00 L17.00 23.40 L13.60 16.00 L20.00 15.60 Z' fill='%23FFFFFF' stroke='%230A0A0D' stroke-width='1.50' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 5 3, auto}
+a,button,[role=button],label,summary,.btn{cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Cpath d='M5.60 3.36 L5.60 24.64 L11.20 19.60 L15.12 28.00 L19.04 26.21 L15.23 17.92 L22.40 17.47 Z' fill='%23FFFFFF' stroke='%230A0A0D' stroke-width='1.68' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E") 6 3, pointer}
+input,textarea,[contenteditable]{cursor:text}
+/* parallax: o JS só mexe em translate/scale/opacity (propriedades independentes de transform) */
+.divider{transform-origin:50% 50%}
+
+/* efeitos criativos (só com JS ativo e sem "reduzir movimento") */
+.tw .ghost{visibility:hidden}
+.tw .typed::after{content:"";display:inline-block;width:2px;height:1em;margin-right:-2px;vertical-align:-.15em;background:var(--neon);box-shadow:0 0 8px var(--neon-glow);animation:caret 1s steps(1) infinite}
+.tw.tw-done .typed::after{display:none}
+@keyframes caret{50%{opacity:0}}
+.services{perspective:1400px}
+.pill::before{transform:scaleX(var(--l,1));transform-origin:left}
+.pill .row i{transition:opacity .35s, box-shadow .35s}
+.js-fx .pill .row i:not(.on){opacity:.15;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4)}
+/* Método: uma faixa branca abre a partir de uma linha e a secção fica em negativo */
+#metodo{isolation:isolate}
+#metodo::before{content:"";position:absolute;inset:0;z-index:-1;background:#F4F4F6;clip-path:inset(calc((1 - var(--inv,0)) * 50%) 0)}
+#metodo .kicker,#metodo h2,#metodo .sec-head p,#metodo .step h3,#metodo .step p{transition:color .45s ease}
+#metodo .step{transition:background .45s ease, box-shadow .45s ease}
+#metodo.inv .kicker{color:#6E6E78}
+#metodo.inv h2{color:#0A0A0D}
+#metodo.inv .sec-head p{color:#4A4A52}
+#metodo.inv .step{background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.06),0 24px 50px -28px rgba(20,20,60,.4)}
+#metodo.inv .step h3{color:#0A0A0D}
+#metodo.inv .step p{color:#55555E}
+.cta::before{opacity:var(--cg,1)}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<style>
+/* ---- teste: cenas fixas conduzidas pelo scroll ---- */
+html.scenes main,html.scenes footer{display:none}
+.stage{position:fixed;inset:0;overflow:hidden;z-index:2}
+.scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:84px 0 32px;perspective:1400px}
+.scene>.wrap,.scene>section{width:100%}
+.scene .wrap{perspective:1400px}
+.scene .hero{min-height:0;padding-block:0;overflow:visible;width:100%;height:100%}
+.scene .sec{padding:0}
+.scene .sec-head{margin-bottom:0}
+.scene .wrap .wrap{padding-inline:0}
+.scene .foot{margin-top:28px}
+.scene .services{width:100%}
+.scene .photo{aspect-ratio:auto;height:min(70vh,640px)}
+.scene .team{align-items:center}
+.scene .quote{position:relative}
+/* Método: painel branco em ecrã inteiro que abre a partir de uma linha */
+.m-panel{position:absolute;inset:0;background:#F4F4F6;clip-path:inset(50% 0);visibility:hidden}
+.m-line{height:2px;margin-top:22px;border-radius:2px;background:rgba(10,10,13,.08);overflow:hidden}
+.m-line i{display:block;height:100%;background:linear-gradient(90deg,#3322FF,#1A8CFF,#00E1FF);transform-origin:left;transform:scaleX(var(--k,0))}
+/* Talk2me: indicador "a escrever" */
+.t-dots{position:absolute;left:22px;top:22px;display:flex;gap:5px;opacity:0;transition:opacity .2s}
+.t-dots i{width:6px;height:6px;border-radius:50%;background:var(--text-2);animation:tdot 1s infinite ease-in-out}
+.t-dots i:nth-child(2){animation-delay:.15s}.t-dots i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{translate:0 0;opacity:.35}30%{translate:0 -4px;opacity:1}}
+/* navegação entre cenas */
+.scene-dots{position:fixed;right:18px;top:50%;translate:0 -50%;z-index:60;display:flex;flex-direction:column;gap:9px}
+.scene-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s, scale .3s}
+.scene-dots i.on{background:linear-gradient(120deg,#3322FF,#1A8CFF,#00E1FF);scale:1.5}
+body.invert .scene-dots i{background:rgba(0,0,0,.2)}
+body.invert .scene .kicker{color:#6E6E78}
+.test-tag{position:fixed;left:16px;bottom:14px;z-index:60;font:500 11px/1 "Geist Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:#6E6E78}
+@media (max-width:760px){.scene{padding:76px 0 20px;align-items:flex-start;overflow:hidden}.scene .photo{height:42vh}.t-dots{left:18px;top:18px}}
+</style>
+<link rel="canonical" href="https://uzerconsulting.pt/">
+<link rel="alternate" hreflang="pt" href="https://uzerconsulting.pt/">
+<link rel="alternate" hreflang="en" href="https://uzerconsulting.com/">
+<link rel="alternate" hreflang="x-default" href="https://uzerconsulting.com/">
+</head>
+<body>
+<!--UZ-LOADER-->
+<style id="uz-loader-css">
+.uz-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;align-content:center;gap:26px;background:#050506;color:#fff;transition:opacity .45s ease,visibility .45s}
+.uz-loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.uz-loader .uz-lg{width:min(230px,52vw)}
+.uz-loader .uz-lg svg{display:block;width:100%;height:auto;overflow:visible}
+.uz-loader .lp{fill:#fff;fill-opacity:1;stroke:#fff;stroke-opacity:0;stroke-width:1.3px;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0}
+.uz-loader.play .lp{fill-opacity:0;stroke-opacity:1;stroke-dashoffset:1;
+  animation:uz-draw 1.05s cubic-bezier(.65,0,.35,1) calc(var(--i) * .13s) forwards,uz-fill .45s ease calc(.95s + var(--i) * .09s) forwards}
+.uz-loader.play.fast .lp{animation-duration:.55s,.3s;animation-delay:calc(var(--i) * .06s),calc(.42s + var(--i) * .05s)}
+.uz-loader .uz-lg svg{animation:uz-breathe 1.9s ease-in-out 1.5s infinite alternate}
+.uz-loader .uz-bar{width:min(230px,52vw);height:2px;border-radius:2px;background:rgba(255,255,255,.1);overflow:hidden}
+.uz-loader .uz-bar i{display:block;height:100%;width:38%;border-radius:2px;background:linear-gradient(90deg,#3322FF,#1A8CFF,#00E1FF);transform:translateX(-110%);animation:uz-bar 1.25s cubic-bezier(.65,0,.35,1) .35s infinite}
+@keyframes uz-draw{to{stroke-dashoffset:0}}
+@keyframes uz-fill{to{fill-opacity:1;stroke-opacity:0}}
+@keyframes uz-breathe{from{opacity:1}to{opacity:.55}}
+@keyframes uz-bar{to{transform:translateX(280%)}}
+@media (prefers-reduced-motion: reduce){.uz-loader .lp,.uz-loader.play .lp{animation:none;fill-opacity:1;stroke-opacity:0}.uz-loader .uz-lg svg{animation:none}.uz-loader .uz-bar i{animation:none;transform:none;width:100%;opacity:.5}}
+</style>
+<div id="uz-loader" class="uz-loader done" role="status" aria-live="polite" aria-label="A carregar"><div class="uz-lg"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2840 900" aria-hidden="true" focusable="false"><g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path class="lp" pathLength="1" style="--i:0" d="M17680 8984 c-25 -8 -81 -17 -125 -20 -173 -12 -516 -82 -710 -145
+-33 -10 -67 -19 -75 -19 -8 -1 -33 -9 -55 -20 -22 -11 -48 -19 -58 -20 -10 0
+-35 -9 -57 -20 -22 -11 -46 -20 -54 -20 -9 0 -35 -9 -58 -19 -24 -11 -72 -31
+-108 -46 -61 -26 -387 -185 -420 -205 -8 -5 -41 -24 -73 -42 -32 -18 -71 -41
+-85 -50 -15 -10 -40 -25 -55 -33 -53 -30 -207 -139 -369 -260 -270 -202 -691
+-636 -887 -915 -57 -81 -198 -294 -215 -325 -9 -16 -26 -46 -38 -65 -56 -94
+-157 -290 -218 -425 -10 -22 -27 -61 -39 -86 -12 -25 -21 -50 -21 -54 0 -4 -8
+-26 -19 -49 -10 -23 -23 -56 -30 -73 -6 -18 -16 -48 -23 -65 -140 -392 -228
+-822 -249 -1223 -11 -201 -4 -643 12 -748 5 -34 16 -111 23 -172 17 -134 41
+-266 67 -362 10 -40 19 -81 19 -90 0 -10 9 -49 21 -88 66 -222 64 -218 109
+-345 29 -84 42 -117 55 -147 8 -17 15 -37 15 -45 0 -7 9 -26 20 -43 11 -16 20
+-36 20 -43 0 -14 165 -350 205 -417 13 -22 31 -53 39 -70 9 -16 25 -43 36 -60
+11 -16 26 -42 35 -57 16 -28 95 -145 154 -228 17 -25 39 -56 48 -70 24 -34
+125 -160 197 -245 128 -150 464 -475 591 -571 28 -21 64 -50 80 -66 17 -15 33
+-28 36 -28 5 0 21 -11 94 -67 6 -5 55 -38 110 -74 150 -98 185 -121 230 -144
+17 -9 48 -27 70 -40 42 -24 300 -154 370 -184 22 -10 56 -25 75 -34 55 -25
+166 -67 176 -67 5 0 22 -7 38 -15 16 -9 46 -20 65 -25 20 -5 56 -16 81 -24 25
+-9 78 -25 118 -36 39 -11 102 -29 140 -40 37 -11 74 -20 82 -20 8 0 53 -8 100
+-19 131 -31 253 -50 395 -61 72 -6 151 -17 177 -25 68 -22 627 -22 687 0 23 8
+99 19 169 25 152 12 347 46 527 91 22 6 65 16 95 23 30 7 78 21 105 30 28 9
+91 29 140 46 136 44 156 51 201 71 23 11 45 19 49 19 4 0 29 9 54 21 25 11 66
+30 91 41 68 30 133 60 155 71 128 65 229 120 270 145 28 18 60 36 72 41 12 6
+45 26 72 46 28 19 55 35 59 35 5 0 17 9 27 20 10 11 22 20 28 20 5 0 22 10 38
+23 15 12 54 40 85 62 49 35 158 119 233 180 115 93 316 285 436 415 110 120
+311 373 385 485 8 13 30 44 48 69 17 26 32 49 32 52 0 2 15 26 33 52 18 26 54
+85 80 132 27 47 54 96 62 110 8 14 44 86 80 160 37 74 73 148 81 163 17 35 18
+57 2 57 -7 0 -74 7 -148 15 -74 9 -209 20 -300 25 -91 6 -199 14 -240 20 -41
+5 -151 14 -245 20 -93 5 -217 15 -274 22 -104 12 -104 12 -137 -28 -19 -21
+-34 -43 -34 -47 0 -5 -9 -21 -21 -35 -11 -15 -57 -77 -102 -138 -181 -247
+-352 -424 -597 -620 -131 -105 -108 -88 -225 -165 -187 -123 -355 -212 -540
+-287 -27 -11 -73 -30 -102 -41 -28 -12 -58 -21 -65 -21 -7 0 -35 -9 -63 -19
+-111 -42 -315 -90 -520 -123 -122 -19 -179 -22 -450 -22 -274 0 -327 3 -455
+23 -211 33 -392 74 -505 113 -16 6 -50 16 -75 23 -49 14 -105 37 -162 66 -20
+10 -42 19 -48 19 -23 0 -202 92 -378 195 -89 52 -323 220 -397 285 -332 292
+-503 491 -710 825 -58 92 -224 426 -225 451 -1 5 -9 27 -20 49 -11 22 -20 47
+-20 55 0 8 -9 33 -20 55 -11 22 -19 47 -20 55 0 8 -9 42 -19 75 -42 129 -61
+217 -61 282 0 60 4 74 33 118 17 27 52 63 77 80 l45 30 3630 5 3630 5 44 30
+c25 17 58 51 74 78 29 47 29 47 28 350 -1 166 -5 338 -10 382 -32 282 -66 475
+-121 695 -28 112 -49 188 -60 220 -7 19 -20 55 -29 80 -8 25 -21 63 -27 85 -6
+22 -22 65 -34 95 -12 30 -29 73 -36 95 -8 22 -22 56 -31 75 -8 19 -24 53 -34
+75 -66 149 -224 454 -247 477 -6 6 -12 15 -12 19 0 5 -13 27 -29 51 -15 24
+-49 75 -74 113 -25 39 -62 93 -82 120 -20 28 -46 66 -59 85 -13 19 -32 44 -43
+55 -10 11 -43 52 -73 90 -182 238 -582 618 -841 800 -132 93 -180 125 -184
+125 -3 0 -27 15 -53 33 -100 70 -355 209 -512 280 -174 79 -293 126 -410 163
+-25 8 -59 21 -77 29 -17 8 -37 15 -45 15 -7 0 -40 9 -73 20 -77 25 -241 66
+-370 91 -152 31 -212 40 -324 50 -68 6 -142 17 -164 25 -58 20 -722 18 -787
+-2z m700 -1264 c201 -14 470 -68 655 -132 17 -6 50 -16 75 -23 25 -7 61 -19
+80 -28 19 -8 60 -25 90 -37 47 -19 98 -41 160 -70 22 -10 52 -25 80 -40 14 -8
+41 -22 60 -32 19 -10 53 -30 75 -43 22 -13 46 -27 54 -31 43 -22 206 -134 304
+-209 205 -156 491 -446 615 -623 152 -219 211 -316 307 -512 37 -74 75 -152
+86 -172 10 -20 19 -43 19 -50 0 -7 7 -26 16 -43 31 -57 45 -140 33 -195 -13
+-60 -38 -93 -98 -131 -45 -29 -45 -29 -2911 -29 -2865 0 -2865 0 -2905 21 -89
+48 -131 143 -105 242 7 29 21 70 30 92 10 22 28 65 40 95 59 142 177 366 259
+490 20 30 41 62 46 72 46 76 241 317 334 413 131 135 329 309 448 392 84 59
+192 131 233 155 106 61 241 131 325 168 22 10 61 27 86 39 25 12 52 21 58 21
+6 0 29 9 51 20 22 11 47 20 57 20 10 1 36 9 58 20 22 11 47 19 56 20 8 0 42 8
+75 19 136 42 387 90 529 101 144 10 480 11 625 0z"/>
+<path class="lp" pathLength="1" style="--i:1" d="M40 8674 c-13 -34 -13 -7888 0 -8003 5 -46 13 -88 18 -95 5 -6 13
+-22 17 -36 16 -51 97 -141 170 -188 22 -15 71 -37 109 -49 69 -23 69 -23 2197
+-23 2129 0 2129 0 2197 24 157 55 253 153 302 308 19 62 20 105 20 2982 0
+1606 -2 2922 -6 2925 -11 11 -1185 11 -1205 0 -19 -9 -19 -60 -19 -2423 l0
+-2414 -32 -48 c-18 -27 -53 -62 -78 -79 -45 -30 -45 -30 -1174 -33 -1129 -2
+-1129 -2 -1170 19 -59 30 -95 67 -122 124 -24 50 -24 50 -24 3531 0 2693 -3
+3483 -12 3492 -9 9 -155 12 -595 12 -583 0 -583 0 -593 -26z"/>
+<path class="lp" pathLength="1" style="--i:2" d="M3845 8690 c-9 -14 -6 -1235 3 -1238 4 -1 1751 -3 3882 -5 l3876 -2
+46 -30 c26 -17 62 -51 80 -75 33 -45 33 -45 33 -226 0 -181 0 -181 -28 -221
+-25 -36 -64 -71 -109 -98 -9 -5 -109 -73 -223 -150 -113 -77 -224 -151 -245
+-165 -21 -14 -132 -88 -245 -165 -114 -77 -214 -145 -223 -150 -10 -6 -37 -24
+-61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25 -19 -35
+-25 -27 -15 -494 -328 -500 -335 -6 -6 -593 -400 -620 -415 -10 -6 -26 -17
+-35 -25 -9 -8 -25 -19 -35 -25 -10 -5 -138 -91 -285 -190 -146 -99 -284 -191
+-305 -205 -21 -14 -132 -88 -245 -165 -114 -77 -214 -145 -223 -150 -10 -6
+-37 -24 -61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25
+-19 -35 -25 -27 -15 -494 -328 -500 -335 -5 -5 -465 -315 -498 -335 -9 -6 -37
+-24 -61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25 -19
+-35 -25 -10 -5 -138 -91 -284 -190 -147 -99 -283 -190 -304 -202 -129 -76
+-220 -185 -252 -302 -19 -68 -20 -110 -20 -1141 0 -1020 1 -1073 19 -1139 22
+-78 56 -137 115 -200 54 -57 104 -88 188 -117 68 -24 68 -24 3362 -24 1812 0
+3301 3 3310 6 14 6 16 69 16 613 0 459 -3 610 -12 619 -9 9 -640 12 -2776 12
+-2605 0 -2767 1 -2813 17 -29 11 -66 35 -90 59 -57 58 -69 112 -69 309 0 183
+13 252 57 297 24 25 190 142 323 228 21 14 132 88 245 165 114 77 214 145 223
+150 10 6 37 24 61 40 24 17 52 35 61 40 10 6 26 17 35 25 9 8 25 19 35 25 27
+15 494 328 500 335 6 6 593 400 620 415 10 6 26 17 35 25 9 8 25 19 35 25 18
+10 228 151 783 526 142 96 266 179 275 184 18 11 70 46 138 92 22 15 48 33 56
+38 40 25 494 330 498 335 6 7 475 321 500 335 10 6 26 17 35 25 9 8 25 19 35
+25 9 5 37 23 61 40 24 16 51 34 61 40 9 5 109 73 223 150 113 77 224 151 245
+165 131 85 448 302 466 318 34 32 88 104 111 147 43 83 45 138 36 1225 -9
+1025 -9 1025 -31 1075 -13 28 -26 55 -30 61 -48 75 -69 99 -114 131 -84 60
+-118 76 -193 89 -89 16 -8790 20 -8800 4z"/>
+<path class="lp" pathLength="1" style="--i:3" d="M23700 8686 c-140 -28 -252 -125 -320 -276 -25 -55 -25 -55 -28
+-4079 -2 -2997 1 -4027 9 -4037 10 -12 115 -14 623 -12 l611 3 5 1067 5 1066
+31 39 c42 52 101 90 151 98 58 8 139 -29 184 -85 19 -23 59 -72 90 -108 30
+-37 74 -92 96 -123 23 -31 48 -62 55 -70 8 -8 47 -57 88 -109 41 -52 80 -101
+88 -109 7 -8 32 -39 55 -70 22 -31 61 -81 86 -111 25 -30 51 -61 58 -70 6 -8
+192 -242 414 -520 221 -278 438 -550 481 -605 43 -55 115 -144 159 -197 l81
+-98 793 0 c493 0 796 4 800 10 4 7 -191 258 -377 485 -56 68 -150 185 -189
+236 -26 33 -58 72 -71 87 -13 15 -48 59 -78 97 -30 39 -78 97 -106 131 -28 33
+-69 85 -92 115 -23 30 -67 86 -99 125 -75 91 -41 49 -523 650 -230 287 -419
+528 -421 535 -3 29 2 37 29 44 40 10 335 159 407 205 17 11 43 27 59 36 16 9
+52 32 80 52 28 19 64 45 81 56 156 109 348 284 478 436 45 52 88 101 95 109
+21 22 114 150 163 226 79 121 90 139 131 215 10 19 22 42 27 50 5 8 28 56 51
+105 23 50 50 107 61 127 10 20 19 43 19 50 0 7 6 24 13 38 13 25 95 278 116
+360 6 25 21 94 32 154 11 60 22 113 24 117 10 15 35 380 35 504 0 159 -22 419
+-45 540 -32 164 -95 409 -120 462 -8 17 -15 38 -15 47 0 9 -9 33 -20 53 -11
+21 -20 45 -20 53 0 9 -6 24 -14 35 -7 11 -17 31 -21 45 -10 32 -88 191 -125
+255 -16 28 -36 64 -44 80 -9 17 -33 55 -53 87 -159 239 -342 450 -528 607 -49
+41 -94 81 -100 87 -5 6 -46 38 -90 70 -196 144 -380 256 -560 343 -49 24 -107
+52 -127 62 -20 10 -43 19 -50 19 -7 0 -30 9 -51 20 -20 11 -44 20 -53 20 -9 0
+-30 7 -47 15 -31 14 -79 29 -177 56 -25 6 -74 20 -109 30 -35 11 -78 19 -94
+19 -16 0 -56 7 -88 15 -119 31 -294 37 -1119 40 -641 3 -840 1 -890 -9z m1790
+-1270 c122 -22 243 -53 302 -77 26 -10 52 -19 59 -19 18 0 193 -83 264 -125
+22 -13 47 -27 55 -31 18 -9 141 -94 156 -108 7 -6 22 -20 35 -30 153 -123 302
+-293 406 -465 66 -109 158 -321 185 -426 6 -22 17 -60 25 -85 7 -25 23 -126
+35 -225 20 -176 20 -184 3 -350 -31 -314 -118 -564 -283 -815 -137 -209 -327
+-397 -537 -535 -121 -80 -274 -154 -445 -215 -19 -7 -64 -19 -100 -26 -36 -8
+-76 -19 -90 -24 -47 -19 -275 -40 -490 -47 -183 -5 -225 -3 -280 11 -78 20
+-126 56 -162 122 -28 49 -28 49 -28 1679 0 1630 0 1630 21 1670 37 70 86 112
+159 136 14 5 158 7 320 5 223 -2 318 -7 390 -20z"/>
+</g></svg></div><div class="uz-bar"><i></i></div></div>
+<script>
+(function () {
+  var L = document.getElementById("uz-loader");
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="airframework"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    try { sessionStorage.setItem("uz-loader", "1"); } catch (err) {}
+    L.classList.remove("play"); void L.offsetWidth; L.classList.add("play", "fast"); L.classList.remove("done");
+    setTimeout(function () { location.href = a.href; }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 150 : 820);
+  });
+  addEventListener("pageshow", function (e) { if (e.persisted) L.classList.add("done"); });
+})();
+</script>
+<!--/UZ-LOADER-->
+
+<header class="nav" id="nav"><div class="wrap nav-in">
+  <a class="logo" href="#top" aria-label="UZER Consulting, início"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2840 900" aria-hidden="true" focusable="false"><g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path d="M17680 8984 c-25 -8 -81 -17 -125 -20 -173 -12 -516 -82 -710 -145
+-33 -10 -67 -19 -75 -19 -8 -1 -33 -9 -55 -20 -22 -11 -48 -19 -58 -20 -10 0
+-35 -9 -57 -20 -22 -11 -46 -20 -54 -20 -9 0 -35 -9 -58 -19 -24 -11 -72 -31
+-108 -46 -61 -26 -387 -185 -420 -205 -8 -5 -41 -24 -73 -42 -32 -18 -71 -41
+-85 -50 -15 -10 -40 -25 -55 -33 -53 -30 -207 -139 -369 -260 -270 -202 -691
+-636 -887 -915 -57 -81 -198 -294 -215 -325 -9 -16 -26 -46 -38 -65 -56 -94
+-157 -290 -218 -425 -10 -22 -27 -61 -39 -86 -12 -25 -21 -50 -21 -54 0 -4 -8
+-26 -19 -49 -10 -23 -23 -56 -30 -73 -6 -18 -16 -48 -23 -65 -140 -392 -228
+-822 -249 -1223 -11 -201 -4 -643 12 -748 5 -34 16 -111 23 -172 17 -134 41
+-266 67 -362 10 -40 19 -81 19 -90 0 -10 9 -49 21 -88 66 -222 64 -218 109
+-345 29 -84 42 -117 55 -147 8 -17 15 -37 15 -45 0 -7 9 -26 20 -43 11 -16 20
+-36 20 -43 0 -14 165 -350 205 -417 13 -22 31 -53 39 -70 9 -16 25 -43 36 -60
+11 -16 26 -42 35 -57 16 -28 95 -145 154 -228 17 -25 39 -56 48 -70 24 -34
+125 -160 197 -245 128 -150 464 -475 591 -571 28 -21 64 -50 80 -66 17 -15 33
+-28 36 -28 5 0 21 -11 94 -67 6 -5 55 -38 110 -74 150 -98 185 -121 230 -144
+17 -9 48 -27 70 -40 42 -24 300 -154 370 -184 22 -10 56 -25 75 -34 55 -25
+166 -67 176 -67 5 0 22 -7 38 -15 16 -9 46 -20 65 -25 20 -5 56 -16 81 -24 25
+-9 78 -25 118 -36 39 -11 102 -29 140 -40 37 -11 74 -20 82 -20 8 0 53 -8 100
+-19 131 -31 253 -50 395 -61 72 -6 151 -17 177 -25 68 -22 627 -22 687 0 23 8
+99 19 169 25 152 12 347 46 527 91 22 6 65 16 95 23 30 7 78 21 105 30 28 9
+91 29 140 46 136 44 156 51 201 71 23 11 45 19 49 19 4 0 29 9 54 21 25 11 66
+30 91 41 68 30 133 60 155 71 128 65 229 120 270 145 28 18 60 36 72 41 12 6
+45 26 72 46 28 19 55 35 59 35 5 0 17 9 27 20 10 11 22 20 28 20 5 0 22 10 38
+23 15 12 54 40 85 62 49 35 158 119 233 180 115 93 316 285 436 415 110 120
+311 373 385 485 8 13 30 44 48 69 17 26 32 49 32 52 0 2 15 26 33 52 18 26 54
+85 80 132 27 47 54 96 62 110 8 14 44 86 80 160 37 74 73 148 81 163 17 35 18
+57 2 57 -7 0 -74 7 -148 15 -74 9 -209 20 -300 25 -91 6 -199 14 -240 20 -41
+5 -151 14 -245 20 -93 5 -217 15 -274 22 -104 12 -104 12 -137 -28 -19 -21
+-34 -43 -34 -47 0 -5 -9 -21 -21 -35 -11 -15 -57 -77 -102 -138 -181 -247
+-352 -424 -597 -620 -131 -105 -108 -88 -225 -165 -187 -123 -355 -212 -540
+-287 -27 -11 -73 -30 -102 -41 -28 -12 -58 -21 -65 -21 -7 0 -35 -9 -63 -19
+-111 -42 -315 -90 -520 -123 -122 -19 -179 -22 -450 -22 -274 0 -327 3 -455
+23 -211 33 -392 74 -505 113 -16 6 -50 16 -75 23 -49 14 -105 37 -162 66 -20
+10 -42 19 -48 19 -23 0 -202 92 -378 195 -89 52 -323 220 -397 285 -332 292
+-503 491 -710 825 -58 92 -224 426 -225 451 -1 5 -9 27 -20 49 -11 22 -20 47
+-20 55 0 8 -9 33 -20 55 -11 22 -19 47 -20 55 0 8 -9 42 -19 75 -42 129 -61
+217 -61 282 0 60 4 74 33 118 17 27 52 63 77 80 l45 30 3630 5 3630 5 44 30
+c25 17 58 51 74 78 29 47 29 47 28 350 -1 166 -5 338 -10 382 -32 282 -66 475
+-121 695 -28 112 -49 188 -60 220 -7 19 -20 55 -29 80 -8 25 -21 63 -27 85 -6
+22 -22 65 -34 95 -12 30 -29 73 -36 95 -8 22 -22 56 -31 75 -8 19 -24 53 -34
+75 -66 149 -224 454 -247 477 -6 6 -12 15 -12 19 0 5 -13 27 -29 51 -15 24
+-49 75 -74 113 -25 39 -62 93 -82 120 -20 28 -46 66 -59 85 -13 19 -32 44 -43
+55 -10 11 -43 52 -73 90 -182 238 -582 618 -841 800 -132 93 -180 125 -184
+125 -3 0 -27 15 -53 33 -100 70 -355 209 -512 280 -174 79 -293 126 -410 163
+-25 8 -59 21 -77 29 -17 8 -37 15 -45 15 -7 0 -40 9 -73 20 -77 25 -241 66
+-370 91 -152 31 -212 40 -324 50 -68 6 -142 17 -164 25 -58 20 -722 18 -787
+-2z m700 -1264 c201 -14 470 -68 655 -132 17 -6 50 -16 75 -23 25 -7 61 -19
+80 -28 19 -8 60 -25 90 -37 47 -19 98 -41 160 -70 22 -10 52 -25 80 -40 14 -8
+41 -22 60 -32 19 -10 53 -30 75 -43 22 -13 46 -27 54 -31 43 -22 206 -134 304
+-209 205 -156 491 -446 615 -623 152 -219 211 -316 307 -512 37 -74 75 -152
+86 -172 10 -20 19 -43 19 -50 0 -7 7 -26 16 -43 31 -57 45 -140 33 -195 -13
+-60 -38 -93 -98 -131 -45 -29 -45 -29 -2911 -29 -2865 0 -2865 0 -2905 21 -89
+48 -131 143 -105 242 7 29 21 70 30 92 10 22 28 65 40 95 59 142 177 366 259
+490 20 30 41 62 46 72 46 76 241 317 334 413 131 135 329 309 448 392 84 59
+192 131 233 155 106 61 241 131 325 168 22 10 61 27 86 39 25 12 52 21 58 21
+6 0 29 9 51 20 22 11 47 20 57 20 10 1 36 9 58 20 22 11 47 19 56 20 8 0 42 8
+75 19 136 42 387 90 529 101 144 10 480 11 625 0z"/>
+<path d="M40 8674 c-13 -34 -13 -7888 0 -8003 5 -46 13 -88 18 -95 5 -6 13
+-22 17 -36 16 -51 97 -141 170 -188 22 -15 71 -37 109 -49 69 -23 69 -23 2197
+-23 2129 0 2129 0 2197 24 157 55 253 153 302 308 19 62 20 105 20 2982 0
+1606 -2 2922 -6 2925 -11 11 -1185 11 -1205 0 -19 -9 -19 -60 -19 -2423 l0
+-2414 -32 -48 c-18 -27 -53 -62 -78 -79 -45 -30 -45 -30 -1174 -33 -1129 -2
+-1129 -2 -1170 19 -59 30 -95 67 -122 124 -24 50 -24 50 -24 3531 0 2693 -3
+3483 -12 3492 -9 9 -155 12 -595 12 -583 0 -583 0 -593 -26z"/>
+<path d="M3845 8690 c-9 -14 -6 -1235 3 -1238 4 -1 1751 -3 3882 -5 l3876 -2
+46 -30 c26 -17 62 -51 80 -75 33 -45 33 -45 33 -226 0 -181 0 -181 -28 -221
+-25 -36 -64 -71 -109 -98 -9 -5 -109 -73 -223 -150 -113 -77 -224 -151 -245
+-165 -21 -14 -132 -88 -245 -165 -114 -77 -214 -145 -223 -150 -10 -6 -37 -24
+-61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25 -19 -35
+-25 -27 -15 -494 -328 -500 -335 -6 -6 -593 -400 -620 -415 -10 -6 -26 -17
+-35 -25 -9 -8 -25 -19 -35 -25 -10 -5 -138 -91 -285 -190 -146 -99 -284 -191
+-305 -205 -21 -14 -132 -88 -245 -165 -114 -77 -214 -145 -223 -150 -10 -6
+-37 -24 -61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25
+-19 -35 -25 -27 -15 -494 -328 -500 -335 -5 -5 -465 -315 -498 -335 -9 -6 -37
+-24 -61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25 -19
+-35 -25 -10 -5 -138 -91 -284 -190 -147 -99 -283 -190 -304 -202 -129 -76
+-220 -185 -252 -302 -19 -68 -20 -110 -20 -1141 0 -1020 1 -1073 19 -1139 22
+-78 56 -137 115 -200 54 -57 104 -88 188 -117 68 -24 68 -24 3362 -24 1812 0
+3301 3 3310 6 14 6 16 69 16 613 0 459 -3 610 -12 619 -9 9 -640 12 -2776 12
+-2605 0 -2767 1 -2813 17 -29 11 -66 35 -90 59 -57 58 -69 112 -69 309 0 183
+13 252 57 297 24 25 190 142 323 228 21 14 132 88 245 165 114 77 214 145 223
+150 10 6 37 24 61 40 24 17 52 35 61 40 10 6 26 17 35 25 9 8 25 19 35 25 27
+15 494 328 500 335 6 6 593 400 620 415 10 6 26 17 35 25 9 8 25 19 35 25 18
+10 228 151 783 526 142 96 266 179 275 184 18 11 70 46 138 92 22 15 48 33 56
+38 40 25 494 330 498 335 6 7 475 321 500 335 10 6 26 17 35 25 9 8 25 19 35
+25 9 5 37 23 61 40 24 16 51 34 61 40 9 5 109 73 223 150 113 77 224 151 245
+165 131 85 448 302 466 318 34 32 88 104 111 147 43 83 45 138 36 1225 -9
+1025 -9 1025 -31 1075 -13 28 -26 55 -30 61 -48 75 -69 99 -114 131 -84 60
+-118 76 -193 89 -89 16 -8790 20 -8800 4z"/>
+<path d="M23700 8686 c-140 -28 -252 -125 -320 -276 -25 -55 -25 -55 -28
+-4079 -2 -2997 1 -4027 9 -4037 10 -12 115 -14 623 -12 l611 3 5 1067 5 1066
+31 39 c42 52 101 90 151 98 58 8 139 -29 184 -85 19 -23 59 -72 90 -108 30
+-37 74 -92 96 -123 23 -31 48 -62 55 -70 8 -8 47 -57 88 -109 41 -52 80 -101
+88 -109 7 -8 32 -39 55 -70 22 -31 61 -81 86 -111 25 -30 51 -61 58 -70 6 -8
+192 -242 414 -520 221 -278 438 -550 481 -605 43 -55 115 -144 159 -197 l81
+-98 793 0 c493 0 796 4 800 10 4 7 -191 258 -377 485 -56 68 -150 185 -189
+236 -26 33 -58 72 -71 87 -13 15 -48 59 -78 97 -30 39 -78 97 -106 131 -28 33
+-69 85 -92 115 -23 30 -67 86 -99 125 -75 91 -41 49 -523 650 -230 287 -419
+528 -421 535 -3 29 2 37 29 44 40 10 335 159 407 205 17 11 43 27 59 36 16 9
+52 32 80 52 28 19 64 45 81 56 156 109 348 284 478 436 45 52 88 101 95 109
+21 22 114 150 163 226 79 121 90 139 131 215 10 19 22 42 27 50 5 8 28 56 51
+105 23 50 50 107 61 127 10 20 19 43 19 50 0 7 6 24 13 38 13 25 95 278 116
+360 6 25 21 94 32 154 11 60 22 113 24 117 10 15 35 380 35 504 0 159 -22 419
+-45 540 -32 164 -95 409 -120 462 -8 17 -15 38 -15 47 0 9 -9 33 -20 53 -11
+21 -20 45 -20 53 0 9 -6 24 -14 35 -7 11 -17 31 -21 45 -10 32 -88 191 -125
+255 -16 28 -36 64 -44 80 -9 17 -33 55 -53 87 -159 239 -342 450 -528 607 -49
+41 -94 81 -100 87 -5 6 -46 38 -90 70 -196 144 -380 256 -560 343 -49 24 -107
+52 -127 62 -20 10 -43 19 -50 19 -7 0 -30 9 -51 20 -20 11 -44 20 -53 20 -9 0
+-30 7 -47 15 -31 14 -79 29 -177 56 -25 6 -74 20 -109 30 -35 11 -78 19 -94
+19 -16 0 -56 7 -88 15 -119 31 -294 37 -1119 40 -641 3 -840 1 -890 -9z m1790
+-1270 c122 -22 243 -53 302 -77 26 -10 52 -19 59 -19 18 0 193 -83 264 -125
+22 -13 47 -27 55 -31 18 -9 141 -94 156 -108 7 -6 22 -20 35 -30 153 -123 302
+-293 406 -465 66 -109 158 -321 185 -426 6 -22 17 -60 25 -85 7 -25 23 -126
+35 -225 20 -176 20 -184 3 -350 -31 -314 -118 -564 -283 -815 -137 -209 -327
+-397 -537 -535 -121 -80 -274 -154 -445 -215 -19 -7 -64 -19 -100 -26 -36 -8
+-76 -19 -90 -24 -47 -19 -275 -40 -490 -47 -183 -5 -225 -3 -280 11 -78 20
+-126 56 -162 122 -28 49 -28 49 -28 1679 0 1630 0 1630 21 1670 37 70 86 112
+159 136 14 5 158 7 320 5 223 -2 318 -7 390 -20z"/>
+</g></svg></a>
+  <nav class="nav-links" aria-label="Secções">
+    <a href="#servicos">O que fazemos</a><a href="#air">AIR Framework</a><a href="#metodo">Método</a><a href="#talk2me">Talk2me</a><a href="#equipa">Equipa</a>
+  <a href="https://uzerconsulting.com/" hreflang="en" lang="en" title="English" style="opacity:.75">EN</a></nav>
+  <a class="btn btn-air" href="airframework/">AIR Framework</a>
+</div></header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-bg" id="heroBg"><div class="grain"></div></div>
+    <div class="zwrap" aria-hidden="true">
+      <svg class="bigz" id="bigz" viewBox="0 0 1410 1290" overflow="visible" focusable="false">
+        <defs>
+          <!-- os paths do Z vêm com transform (escala 0,1 e y invertido): o degradê é definido nesse espaço -->
+          <linearGradient id="zgP" gradientUnits="userSpaceOnUse" x1="0" y1="12900" x2="14100" y2="0"><stop offset="0" stop-color="#3322FF"/><stop offset=".55" stop-color="#1A8CFF"/><stop offset="1" stop-color="#00E1FF"/></linearGradient>
+          <linearGradient id="zx1"><stop offset="0" stop-color="#312BFF" stop-opacity="0"/><stop offset=".35" stop-color="#312BFF"/></linearGradient>
+          <linearGradient id="zx4"><stop offset=".65" stop-color="#03D9FF"/><stop offset="1" stop-color="#03D9FF" stop-opacity="0"/></linearGradient>
+        </defs>
+        <g fill="url(#zgP)">
+<path transform="translate(0.000000,1290.000000) scale(0.100000,-0.100000)" d="M195 12736 c-20 -14 -20 -34 -20 -930 0 -629 3 -918 11 -926 7 -7
+1740 -10 5780 -10 3344 0 5795 -4 5831 -9 46 -7 76 -19 120 -49 65 -44 130
+-130 144 -189 11 -49 11 -456 0 -505 -13 -55 -68 -134 -126 -178 -29 -22 -57
+-40 -63 -40 -6 0 -27 -13 -45 -30 -19 -16 -39 -30 -43 -30 -5 -1 -25 -14 -44
+-30 -19 -17 -39 -30 -45 -30 -5 0 -29 -15 -52 -33 -51 -39 -97 -71 -142 -100
+-19 -12 -51 -33 -71 -47 -20 -14 -52 -35 -71 -47 -19 -12 -47 -31 -64 -43 -16
+-12 -45 -31 -64 -43 -19 -12 -53 -34 -75 -50 -23 -15 -54 -35 -69 -45 -16 -9
+-45 -29 -64 -44 -20 -16 -39 -28 -43 -28 -4 0 -23 -12 -43 -27 -19 -16 -48
+-36 -64 -45 -15 -10 -47 -30 -69 -45 -23 -16 -61 -41 -84 -57 -24 -15 -53 -37
+-64 -47 -11 -11 -25 -19 -31 -19 -6 0 -26 -13 -45 -30 -19 -16 -39 -29 -44
+-30 -4 0 -22 -12 -40 -26 -17 -14 -65 -48 -106 -75 -85 -56 -98 -65 -193 -128
+-108 -72 -141 -94 -178 -118 -19 -12 -47 -31 -64 -43 -16 -12 -45 -31 -64 -43
+-19 -12 -53 -34 -75 -50 -23 -15 -54 -35 -70 -45 -16 -9 -40 -26 -55 -38 -14
+-12 -40 -28 -56 -37 -17 -8 -39 -24 -49 -36 -11 -12 -23 -21 -28 -21 -10 0
+-105 -61 -132 -86 -10 -9 -28 -22 -40 -28 -12 -6 -37 -23 -57 -38 -20 -16 -39
+-28 -44 -28 -4 0 -21 -12 -39 -26 -42 -35 -134 -94 -144 -94 -5 0 -17 -9 -28
+-21 -10 -12 -32 -28 -49 -36 -16 -9 -42 -25 -56 -37 -15 -12 -39 -29 -55 -38
+-16 -10 -47 -30 -70 -45 -22 -16 -56 -38 -75 -50 -19 -12 -47 -31 -64 -43 -16
+-12 -45 -31 -64 -43 -19 -12 -51 -33 -72 -47 -20 -14 -72 -48 -116 -77 -43
+-28 -92 -63 -109 -77 -18 -14 -34 -26 -38 -26 -3 0 -40 -24 -82 -52 -42 -29
+-84 -57 -93 -63 -9 -5 -32 -22 -52 -37 -20 -16 -40 -28 -46 -28 -5 0 -18 -8
+-29 -19 -11 -10 -40 -32 -64 -47 -23 -16 -59 -40 -80 -54 -20 -14 -52 -35 -71
+-47 -19 -12 -47 -31 -64 -43 -16 -12 -45 -31 -64 -43 -19 -12 -53 -34 -75 -50
+-23 -15 -54 -35 -69 -45 -16 -9 -45 -29 -64 -44 -20 -16 -39 -28 -43 -28 -4 0
+-23 -12 -43 -27 -19 -16 -48 -36 -64 -45 -15 -10 -46 -30 -69 -45 -22 -16 -56
+-38 -75 -50 -45 -29 -91 -61 -142 -100 -23 -18 -47 -33 -52 -33 -6 0 -26 -13
+-45 -30 -19 -16 -39 -29 -44 -30 -4 0 -22 -12 -40 -26 -17 -14 -66 -49 -109
+-77 -44 -29 -96 -63 -116 -77 -21 -14 -53 -35 -72 -47 -19 -12 -47 -31 -64
+-43 -16 -12 -45 -31 -64 -43 -19 -12 -51 -33 -71 -47 -20 -14 -52 -35 -71 -47
+-19 -12 -47 -31 -64 -43 -16 -12 -45 -31 -64 -43 -19 -12 -53 -34 -75 -50 -23
+-15 -54 -35 -70 -45 -16 -9 -44 -29 -61 -44 -18 -16 -35 -28 -39 -28 -6 0
+-127 -80 -136 -90 -9 -10 -130 -90 -136 -90 -3 0 -20 -12 -38 -26 -17 -14 -66
+-49 -109 -77 -44 -29 -96 -63 -116 -77 -21 -14 -53 -35 -72 -47 -19 -12 -47
+-31 -64 -43 -16 -12 -45 -31 -64 -43 -19 -12 -51 -33 -71 -47 -21 -14 -49 -33
+-64 -42 -14 -10 -38 -26 -52 -35 -41 -28 -95 -63 -181 -120 -43 -28 -92 -63
+-109 -77 -18 -14 -36 -26 -40 -26 -5 -1 -25 -14 -44 -30 -19 -17 -38 -30 -44
+-30 -5 0 -25 -12 -45 -27 -50 -39 -121 -86 -153 -102 -16 -8 -28 -18 -28 -22
+0 -5 -17 -18 -37 -29 -35 -19 -54 -32 -138 -90 -16 -12 -45 -31 -64 -43 -19
+-12 -51 -33 -71 -47 -20 -14 -52 -35 -71 -47 -19 -12 -47 -31 -64 -43 -84 -58
+-103 -71 -138 -90 -52 -29 -183 -162 -210 -214 -44 -86 -56 -112 -79 -186
+l-23 -75 -3 -1600 -2 -1600 30 -120 c18 -66 37 -127 45 -135 7 -8 22 -35 34
+-58 26 -52 146 -175 216 -222 50 -33 136 -69 230 -96 43 -12 754 -14 4997 -12
+3471 2 4950 6 4958 14 7 7 10 287 10 905 0 492 0 902 0 911 0 10 -13 24 -30
+33 -26 13 -478 15 -4172 15 l-4143 0 -63 23 c-45 17 -79 39 -118 76 -30 29
+-61 66 -69 81 -34 65 -45 166 -45 398 0 367 23 422 229 555 19 12 51 33 71 47
+20 14 52 35 71 47 19 12 48 31 64 43 17 12 45 31 64 43 19 12 53 34 75 50 23
+15 54 35 69 45 16 9 45 29 64 45 20 15 39 27 43 27 4 0 23 12 43 28 19 15 48
+35 64 44 15 10 47 30 69 45 23 16 61 41 84 57 24 15 53 37 64 47 11 11 25 19
+31 19 6 0 26 13 45 30 19 16 39 29 44 30 4 0 22 12 40 26 17 14 66 49 109 77
+44 29 96 63 116 77 21 14 53 35 72 47 19 12 48 31 64 43 17 12 45 31 64 43 19
+12 51 33 71 47 20 14 52 35 71 47 19 12 48 31 64 43 17 12 45 31 64 43 19 12
+53 34 75 50 23 15 54 35 70 45 16 9 44 29 61 44 18 16 36 28 39 28 9 0 106 64
+130 86 10 9 28 22 40 28 12 6 37 23 57 39 20 15 39 27 44 27 4 0 21 12 39 26
+17 14 66 49 109 77 44 29 96 63 116 77 21 14 53 35 72 47 19 12 48 31 64 43
+17 12 45 31 64 43 19 12 51 33 71 47 21 14 49 33 64 43 14 9 38 25 52 35 34
+22 83 55 181 119 43 28 91 62 108 75 16 13 39 28 52 35 12 6 28 16 35 23 11 9
+77 53 127 85 9 6 32 22 52 38 20 15 40 27 46 27 5 0 18 8 29 19 11 10 40 32
+64 47 23 16 59 40 80 54 20 14 52 35 71 47 19 12 48 31 64 43 17 12 45 31 64
+43 19 12 51 33 71 47 20 14 52 35 71 47 19 12 48 31 64 43 17 12 45 31 64 43
+19 12 53 34 75 50 23 15 54 35 70 45 16 9 42 29 59 44 18 16 37 28 43 28 6 0
+27 12 47 28 89 67 125 92 133 92 6 0 25 13 44 30 19 16 39 29 44 30 4 0 22 12
+40 26 17 14 66 49 109 77 44 29 96 63 116 77 21 14 53 35 72 47 19 12 48 31
+64 43 17 12 45 31 64 43 19 12 51 33 71 47 21 14 49 33 64 43 14 9 38 25 52
+35 41 27 95 62 181 119 43 28 92 63 109 77 18 14 35 26 38 26 6 0 127 80 136
+90 9 10 130 90 136 90 3 0 20 12 38 26 17 14 66 49 109 77 44 29 96 63 116 77
+21 14 53 35 72 47 19 12 48 31 64 43 17 12 45 31 64 43 19 12 51 33 71 47 21
+14 50 34 66 44 16 11 40 26 53 35 35 24 90 60 178 118 43 28 92 63 109 77 18
+14 36 26 40 26 5 1 25 14 44 30 19 17 39 30 45 30 5 0 29 15 52 33 51 39 97
+71 142 100 19 12 53 34 75 50 23 15 54 35 69 45 16 9 45 29 64 45 20 15 39 27
+43 27 4 0 23 12 43 28 19 15 48 35 64 44 15 10 46 30 69 45 22 16 56 38 75 50
+19 12 48 31 64 43 17 12 45 31 64 43 19 12 51 33 71 47 21 14 57 38 81 54 24
+16 50 35 57 43 8 7 28 20 45 28 74 35 192 137 251 215 68 92 102 174 121 292
+16 99 16 207 6 1610 -6 826 -15 1530 -20 1563 -14 93 -89 238 -170 329 -72 80
+-224 167 -336 194 -65 15 -580 17 -6635 19 -5673 3 -6569 1 -6585 -11z"/>
+</g>
+        <rect class="zx" data-side="L" data-at="20" y="15" height="188" width="0" fill="url(#zx1)"/>
+        <rect class="zx" data-side="R" data-at="1389" y="1090" height="187" width="0" fill="url(#zx4)"/>
+      </svg>
+    </div>
+    <div class="wrap">
+      <h1 class="rise d1" data-hero="0.30">Reinventamos a experiência do <span class="grad-text cloud">cliente</span>.</h1>
+      <p class="lead rise d2" data-hero="0.22">Somos uma consultora de estratégia e marketing digital orientada por dados. Ajudamos marcas a serem encontradas, compreendidas e escolhidas: no percurso de compra, nos canais digitais e, agora, dentro das respostas do ChatGPT, Gemini, Perplexity e Claude.</p>
+      <div class="hero-ctas rise d3" data-hero="0.15">
+        <a class="btn btn-white" href="#servicos">O que fazemos</a>
+        <a class="btn btn-air" href="airframework/">Entrar no AIR Framework</a>
+      </div>
+      <div class="hero-meta rise d4" data-hero="0.09">
+        <div><b>30</b>critérios no AIR Score</div>
+        <div><b>3</b>pilares: Visibilidade, Legibilidade, Credibilidade</div>
+        <div><b>2020</b>fundada no Estoril</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" data-line></div>
+
+  <section class="sec" id="servicos"><div class="wrap">
+    <div class="sec-head">
+      <div data-y="28" data-reveal><div class="kicker">O que fazemos</div><h2>Do percurso do cliente à resposta da IA.</h2></div>
+      <p data-y="10" data-reveal>Trabalhamos onde a decisão acontece. Mapeamos o percurso do consumidor, identificamos as oportunidades com mais impacto e acompanhamos a execução até os resultados aparecerem.</p>
+    </div>
+    <div class="services">
+      <article class="svc feature" id="air" data-y="12" data-reveal>
+        <div>
+          <span class="num">01</span>
+          <h3>GEO e visibilidade em IA <span class="tag-new">AIR Framework</span></h3>
+          <p>Os assistentes de IA já respondem antes de o cliente chegar ao seu site. Com o AIR (AI Readiness Score), o nosso modelo proprietário, auditamos 30 critérios com evidência pública verificável e medimos o que falta para a sua marca ser encontrada, compreendida e recomendada pela IA. Cada auditoria dá origem a um plano de ação por página e a sprints de melhoria com medição contínua.</p>
+          <ul><li>Auditoria AIR com evidência</li><li>Planos de ação por página</li><li>Monitorização de prompts</li><li>Sprints bimestrais</li></ul>
+          <div class="hero-ctas" style="margin-top:26px"><a class="btn btn-air" href="airframework/">Área de cliente AIR</a></div>
+        </div>
+        <div>
+          <div class="air-mini" aria-label="Pré-visualização do AIR Framework">
+            <div class="pill pv" data-y="16"><h4>VISIBILIDADE</h4>
+              <div class="row"><b>V1</b><span>Páginas por serviço e pergunta</span><i class="g"></i></div>
+              <div class="row"><b>V4</b><span>Perfis locais e diretórios</span><i class="g"></i></div>
+              <div class="row"><b>V7</b><span>YouTube e podcasts</span><i class="y"></i></div>
+              <div class="row"><b>V9</b><span>Índices dos assistentes</span><i class="g"></i></div></div>
+            <div class="pill pl" data-y="38"><h4>LEGIBILIDADE</h4>
+              <div class="row"><b>L1</b><span>Entidade consistente</span><i class="y"></i></div>
+              <div class="row"><b>L5</b><span>Wikidata e bases de conhecimento</span><i class="r"></i></div>
+              <div class="row"><b>L6</b><span>Dados estruturados</span><i class="y"></i></div>
+              <div class="row"><b>L9</b><span>Acesso dos crawlers de IA</span><i class="g"></i></div></div>
+            <div class="pill pc" data-y="60"><h4>CREDIBILIDADE</h4>
+              <div class="row"><b>C1</b><span>Imprensa e media</span><i class="y"></i></div>
+              <div class="row"><b>C5</b><span>Reviews públicas</span><i class="g"></i></div>
+              <div class="row"><b>C7</b><span>Comunidades e fóruns</span><i class="r"></i></div>
+              <div class="row"><b>C9</b><span>Gestão de avaliações</span><i class="g"></i></div></div>
+          </div>
+          <div class="formula">AIR = 35 × V/20 + 30 × L/20 + 35 × C/20 → de 0 a 100</div>
+          <div class="legend"><span><i class="g"></i>forte</span><span><i class="y"></i>parcial</span><span><i></i>em falta</span></div>
+        </div>
+      </article>
+      <article class="svc" data-y="16" data-reveal>
+        <span class="num">02</span>
+        <h3>Estratégia de customer experience</h3>
+        <p>Mapas de percurso do consumidor, da descoberta à recomendação, construídos sobre dados reais. Priorizamos cada oportunidade num mapa de ação por impacto e esforço, para saber o que fazer primeiro.</p>
+        <ul><li>Consumer journey</li><li>Personas</li><li>Mapa de ação</li><li>Posicionamento</li></ul>
+      </article>
+      <article class="svc" data-y="40" data-reveal>
+        <span class="num">03</span>
+        <h3>Marketing digital orientado por dados</h3>
+        <p>SEO e SEM, conteúdo, email e automação, redes sociais e fidelização, desenhados por persona e ligados aos momentos do percurso onde têm mais retorno.</p>
+        <ul><li>SEO / SEM</li><li>Content marketing</li><li>Marketing automation</li><li>Loyalty</li></ul>
+      </article>
+      <article class="svc" data-y="16" data-reveal>
+        <span class="num">04</span>
+        <h3>Formação de equipas</h3>
+        <p>Programas de formação em marketing, gestão e experiência do cliente, e eventos de motivação de equipas, pensados para pôr o método a funcionar dentro da organização.</p>
+        <ul><li>Marketing e gestão</li><li>Workshops</li><li>Eventos de equipa</li></ul>
+      </article>
+      <article class="svc" data-y="40" data-reveal>
+        <span class="num">05</span>
+        <h3>Produção cultural e conteúdos</h3>
+        <p>Produção de projetos culturais, roteiros e conteúdos audiovisuais, e plataformas conversacionais como o Talk2me, que liga pessoas a lugares, obras e histórias.</p>
+        <ul><li>Produção cultural</li><li>Audiovisual</li><li>Talk2me</li></ul>
+      </article>
+    </div>
+  </div></section>
+
+  <div class="divider" data-line></div>
+
+  <section class="sec" id="metodo"><div class="wrap">
+    <div class="sec-head">
+      <div data-y="28" data-reveal><div class="kicker">Método</div><h2>Diagnóstico com prova. Ação com dono.</h2></div>
+      <p data-y="10" data-reveal>Cada projeto segue o mesmo ciclo: medimos com evidência, transformamos os gaps em ações concretas e voltamos a medir.</p>
+    </div>
+    <div class="steps">
+      <div class="step" data-y="10" data-reveal><span class="n grad-text">01</span><h3>Diagnóstico</h3><p>Auditoria critério a critério, com fontes, citações e capturas que provam cada avaliação.</p></div>
+      <div class="step" data-y="22" data-reveal><span class="n grad-text">02</span><h3>Plano de ação</h3><p>Ações priorizadas por impacto e esforço, com responsável, por página e por canal.</p></div>
+      <div class="step" data-y="34" data-reveal><span class="n grad-text">03</span><h3>Sprints</h3><p>Ciclos curtos de conteúdo, estrutura técnica e autoridade externa, executados com a sua equipa.</p></div>
+      <div class="step" data-y="46" data-reveal><span class="n grad-text">04</span><h3>Medição</h3><p>Painel fixo de prompts e modelos para acompanhar a evolução face aos concorrentes.</p></div>
+    </div>
+  </div></section>
+
+  <div class="divider" data-line></div>
+
+  <section class="sec" id="talk2me"><div class="wrap t2m">
+    <div data-y="24" data-reveal>
+      <div class="kicker">Talk2me</div>
+      <h2>Pôr os lugares a falar.</h2>
+      <p style="color:var(--text-2);font-size:17px;max-width:50ch;margin:22px 0 0">O Talk2me é a nossa plataforma conversacional para cultura e turismo. Com o telemóvel, qualquer pessoa conversa com um monumento, um mural ou um objeto: fica a saber o que representa, quem o criou, vê o making-of e recebe sugestões do que visitar a seguir. Levámo-lo à Covilhã, com o NEST e o festival WOOL, para dar voz à arte urbana da cidade.</p>
+    </div>
+    <div class="quotes">
+      <figure class="quote" style="margin:0" data-x="70" data-reveal><p>"A plataforma que nos põe a falar com paredes, arte e objetos."</p><cite>Observador</cite></figure>
+      <figure class="quote" style="margin:0" data-x="-70" data-reveal><p>"Um chatbot que põe os monumentos em Portugal a falar."</p><cite>Visão</cite></figure>
+      <figure class="quote" style="margin:0" data-x="70" data-reveal><p>"Criada para partilhar informação cultural de forma simples e rápida."</p><cite>SAPO</cite></figure>
+    </div>
+  </div></section>
+
+  <div class="divider" data-line></div>
+
+  <section class="sec" id="equipa"><div class="wrap team">
+    <div class="photo" data-y="-18" data-reveal><img data-zoom="36" src="assets/equipa.jpg" alt="Os três sócios da UZER Consulting" loading="lazy" width="975" height="1300"></div>
+    <div>
+      <div class="kicker">Equipa</div>
+      <h2>Uma equipa pequena, sénior e próxima.</h2>
+      <p style="color:var(--text-2);font-size:17px;max-width:50ch;margin:22px 0 0">Juntamos consultoria de estratégia, marketing digital, investigação de consumidor e produção. Trabalhamos diretamente com quem decide, sem camadas entre o problema e a solução.</p>
+      <div class="people">
+        <div class="person" data-x="46" data-reveal><b>Filipa Caldeira</b><span>Partner</span></div>
+        <div class="person" data-x="46" data-reveal><b>Nuno Moreira</b><span>Partner</span></div>
+        <div class="person" data-x="46" data-reveal><b>Pedro Batalha</b><span>Partner</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="contacto" style="padding-top:40px"><div class="wrap">
+    <div class="cta" data-grow data-reveal>
+      <div class="kicker">Contacto</div>
+      <h2>Vamos ver onde está a sua marca nas respostas da IA.</h2>
+      <p>Começamos por um diagnóstico AIR. Se já é cliente, entre na sua área para ver a auditoria, a evidência de cada critério e o plano de ação.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-white" href="https://www.linkedin.com/company/uzer-consulting/" target="_blank" rel="noopener">Falar connosco no LinkedIn</a>
+        <a class="btn btn-air" href="airframework/">AIR Framework</a>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<footer><div class="wrap foot">
+  <div>
+    <span class="logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2840 900" aria-hidden="true" focusable="false"><g transform="translate(0.000000,900.000000) scale(0.100000,-0.100000)"
+fill="currentColor" stroke="none">
+<path d="M17680 8984 c-25 -8 -81 -17 -125 -20 -173 -12 -516 -82 -710 -145
+-33 -10 -67 -19 -75 -19 -8 -1 -33 -9 -55 -20 -22 -11 -48 -19 -58 -20 -10 0
+-35 -9 -57 -20 -22 -11 -46 -20 -54 -20 -9 0 -35 -9 -58 -19 -24 -11 -72 -31
+-108 -46 -61 -26 -387 -185 -420 -205 -8 -5 -41 -24 -73 -42 -32 -18 -71 -41
+-85 -50 -15 -10 -40 -25 -55 -33 -53 -30 -207 -139 -369 -260 -270 -202 -691
+-636 -887 -915 -57 -81 -198 -294 -215 -325 -9 -16 -26 -46 -38 -65 -56 -94
+-157 -290 -218 -425 -10 -22 -27 -61 -39 -86 -12 -25 -21 -50 -21 -54 0 -4 -8
+-26 -19 -49 -10 -23 -23 -56 -30 -73 -6 -18 -16 -48 -23 -65 -140 -392 -228
+-822 -249 -1223 -11 -201 -4 -643 12 -748 5 -34 16 -111 23 -172 17 -134 41
+-266 67 -362 10 -40 19 -81 19 -90 0 -10 9 -49 21 -88 66 -222 64 -218 109
+-345 29 -84 42 -117 55 -147 8 -17 15 -37 15 -45 0 -7 9 -26 20 -43 11 -16 20
+-36 20 -43 0 -14 165 -350 205 -417 13 -22 31 -53 39 -70 9 -16 25 -43 36 -60
+11 -16 26 -42 35 -57 16 -28 95 -145 154 -228 17 -25 39 -56 48 -70 24 -34
+125 -160 197 -245 128 -150 464 -475 591 -571 28 -21 64 -50 80 -66 17 -15 33
+-28 36 -28 5 0 21 -11 94 -67 6 -5 55 -38 110 -74 150 -98 185 -121 230 -144
+17 -9 48 -27 70 -40 42 -24 300 -154 370 -184 22 -10 56 -25 75 -34 55 -25
+166 -67 176 -67 5 0 22 -7 38 -15 16 -9 46 -20 65 -25 20 -5 56 -16 81 -24 25
+-9 78 -25 118 -36 39 -11 102 -29 140 -40 37 -11 74 -20 82 -20 8 0 53 -8 100
+-19 131 -31 253 -50 395 -61 72 -6 151 -17 177 -25 68 -22 627 -22 687 0 23 8
+99 19 169 25 152 12 347 46 527 91 22 6 65 16 95 23 30 7 78 21 105 30 28 9
+91 29 140 46 136 44 156 51 201 71 23 11 45 19 49 19 4 0 29 9 54 21 25 11 66
+30 91 41 68 30 133 60 155 71 128 65 229 120 270 145 28 18 60 36 72 41 12 6
+45 26 72 46 28 19 55 35 59 35 5 0 17 9 27 20 10 11 22 20 28 20 5 0 22 10 38
+23 15 12 54 40 85 62 49 35 158 119 233 180 115 93 316 285 436 415 110 120
+311 373 385 485 8 13 30 44 48 69 17 26 32 49 32 52 0 2 15 26 33 52 18 26 54
+85 80 132 27 47 54 96 62 110 8 14 44 86 80 160 37 74 73 148 81 163 17 35 18
+57 2 57 -7 0 -74 7 -148 15 -74 9 -209 20 -300 25 -91 6 -199 14 -240 20 -41
+5 -151 14 -245 20 -93 5 -217 15 -274 22 -104 12 -104 12 -137 -28 -19 -21
+-34 -43 -34 -47 0 -5 -9 -21 -21 -35 -11 -15 -57 -77 -102 -138 -181 -247
+-352 -424 -597 -620 -131 -105 -108 -88 -225 -165 -187 -123 -355 -212 -540
+-287 -27 -11 -73 -30 -102 -41 -28 -12 -58 -21 -65 -21 -7 0 -35 -9 -63 -19
+-111 -42 -315 -90 -520 -123 -122 -19 -179 -22 -450 -22 -274 0 -327 3 -455
+23 -211 33 -392 74 -505 113 -16 6 -50 16 -75 23 -49 14 -105 37 -162 66 -20
+10 -42 19 -48 19 -23 0 -202 92 -378 195 -89 52 -323 220 -397 285 -332 292
+-503 491 -710 825 -58 92 -224 426 -225 451 -1 5 -9 27 -20 49 -11 22 -20 47
+-20 55 0 8 -9 33 -20 55 -11 22 -19 47 -20 55 0 8 -9 42 -19 75 -42 129 -61
+217 -61 282 0 60 4 74 33 118 17 27 52 63 77 80 l45 30 3630 5 3630 5 44 30
+c25 17 58 51 74 78 29 47 29 47 28 350 -1 166 -5 338 -10 382 -32 282 -66 475
+-121 695 -28 112 -49 188 -60 220 -7 19 -20 55 -29 80 -8 25 -21 63 -27 85 -6
+22 -22 65 -34 95 -12 30 -29 73 -36 95 -8 22 -22 56 -31 75 -8 19 -24 53 -34
+75 -66 149 -224 454 -247 477 -6 6 -12 15 -12 19 0 5 -13 27 -29 51 -15 24
+-49 75 -74 113 -25 39 -62 93 -82 120 -20 28 -46 66 -59 85 -13 19 -32 44 -43
+55 -10 11 -43 52 -73 90 -182 238 -582 618 -841 800 -132 93 -180 125 -184
+125 -3 0 -27 15 -53 33 -100 70 -355 209 -512 280 -174 79 -293 126 -410 163
+-25 8 -59 21 -77 29 -17 8 -37 15 -45 15 -7 0 -40 9 -73 20 -77 25 -241 66
+-370 91 -152 31 -212 40 -324 50 -68 6 -142 17 -164 25 -58 20 -722 18 -787
+-2z m700 -1264 c201 -14 470 -68 655 -132 17 -6 50 -16 75 -23 25 -7 61 -19
+80 -28 19 -8 60 -25 90 -37 47 -19 98 -41 160 -70 22 -10 52 -25 80 -40 14 -8
+41 -22 60 -32 19 -10 53 -30 75 -43 22 -13 46 -27 54 -31 43 -22 206 -134 304
+-209 205 -156 491 -446 615 -623 152 -219 211 -316 307 -512 37 -74 75 -152
+86 -172 10 -20 19 -43 19 -50 0 -7 7 -26 16 -43 31 -57 45 -140 33 -195 -13
+-60 -38 -93 -98 -131 -45 -29 -45 -29 -2911 -29 -2865 0 -2865 0 -2905 21 -89
+48 -131 143 -105 242 7 29 21 70 30 92 10 22 28 65 40 95 59 142 177 366 259
+490 20 30 41 62 46 72 46 76 241 317 334 413 131 135 329 309 448 392 84 59
+192 131 233 155 106 61 241 131 325 168 22 10 61 27 86 39 25 12 52 21 58 21
+6 0 29 9 51 20 22 11 47 20 57 20 10 1 36 9 58 20 22 11 47 19 56 20 8 0 42 8
+75 19 136 42 387 90 529 101 144 10 480 11 625 0z"/>
+<path d="M40 8674 c-13 -34 -13 -7888 0 -8003 5 -46 13 -88 18 -95 5 -6 13
+-22 17 -36 16 -51 97 -141 170 -188 22 -15 71 -37 109 -49 69 -23 69 -23 2197
+-23 2129 0 2129 0 2197 24 157 55 253 153 302 308 19 62 20 105 20 2982 0
+1606 -2 2922 -6 2925 -11 11 -1185 11 -1205 0 -19 -9 -19 -60 -19 -2423 l0
+-2414 -32 -48 c-18 -27 -53 -62 -78 -79 -45 -30 -45 -30 -1174 -33 -1129 -2
+-1129 -2 -1170 19 -59 30 -95 67 -122 124 -24 50 -24 50 -24 3531 0 2693 -3
+3483 -12 3492 -9 9 -155 12 -595 12 -583 0 -583 0 -593 -26z"/>
+<path d="M3845 8690 c-9 -14 -6 -1235 3 -1238 4 -1 1751 -3 3882 -5 l3876 -2
+46 -30 c26 -17 62 -51 80 -75 33 -45 33 -45 33 -226 0 -181 0 -181 -28 -221
+-25 -36 -64 -71 -109 -98 -9 -5 -109 -73 -223 -150 -113 -77 -224 -151 -245
+-165 -21 -14 -132 -88 -245 -165 -114 -77 -214 -145 -223 -150 -10 -6 -37 -24
+-61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25 -19 -35
+-25 -27 -15 -494 -328 -500 -335 -6 -6 -593 -400 -620 -415 -10 -6 -26 -17
+-35 -25 -9 -8 -25 -19 -35 -25 -10 -5 -138 -91 -285 -190 -146 -99 -284 -191
+-305 -205 -21 -14 -132 -88 -245 -165 -114 -77 -214 -145 -223 -150 -10 -6
+-37 -24 -61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25
+-19 -35 -25 -27 -15 -494 -328 -500 -335 -5 -5 -465 -315 -498 -335 -9 -6 -37
+-24 -61 -40 -24 -17 -52 -35 -61 -40 -10 -6 -26 -17 -35 -25 -9 -8 -25 -19
+-35 -25 -10 -5 -138 -91 -284 -190 -147 -99 -283 -190 -304 -202 -129 -76
+-220 -185 -252 -302 -19 -68 -20 -110 -20 -1141 0 -1020 1 -1073 19 -1139 22
+-78 56 -137 115 -200 54 -57 104 -88 188 -117 68 -24 68 -24 3362 -24 1812 0
+3301 3 3310 6 14 6 16 69 16 613 0 459 -3 610 -12 619 -9 9 -640 12 -2776 12
+-2605 0 -2767 1 -2813 17 -29 11 -66 35 -90 59 -57 58 -69 112 -69 309 0 183
+13 252 57 297 24 25 190 142 323 228 21 14 132 88 245 165 114 77 214 145 223
+150 10 6 37 24 61 40 24 17 52 35 61 40 10 6 26 17 35 25 9 8 25 19 35 25 27
+15 494 328 500 335 6 6 593 400 620 415 10 6 26 17 35 25 9 8 25 19 35 25 18
+10 228 151 783 526 142 96 266 179 275 184 18 11 70 46 138 92 22 15 48 33 56
+38 40 25 494 330 498 335 6 7 475 321 500 335 10 6 26 17 35 25 9 8 25 19 35
+25 9 5 37 23 61 40 24 16 51 34 61 40 9 5 109 73 223 150 113 77 224 151 245
+165 131 85 448 302 466 318 34 32 88 104 111 147 43 83 45 138 36 1225 -9
+1025 -9 1025 -31 1075 -13 28 -26 55 -30 61 -48 75 -69 99 -114 131 -84 60
+-118 76 -193 89 -89 16 -8790 20 -8800 4z"/>
+<path d="M23700 8686 c-140 -28 -252 -125 -320 -276 -25 -55 -25 -55 -28
+-4079 -2 -2997 1 -4027 9 -4037 10 -12 115 -14 623 -12 l611 3 5 1067 5 1066
+31 39 c42 52 101 90 151 98 58 8 139 -29 184 -85 19 -23 59 -72 90 -108 30
+-37 74 -92 96 -123 23 -31 48 -62 55 -70 8 -8 47 -57 88 -109 41 -52 80 -101
+88 -109 7 -8 32 -39 55 -70 22 -31 61 -81 86 -111 25 -30 51 -61 58 -70 6 -8
+192 -242 414 -520 221 -278 438 -550 481 -605 43 -55 115 -144 159 -197 l81
+-98 793 0 c493 0 796 4 800 10 4 7 -191 258 -377 485 -56 68 -150 185 -189
+236 -26 33 -58 72 -71 87 -13 15 -48 59 -78 97 -30 39 -78 97 -106 131 -28 33
+-69 85 -92 115 -23 30 -67 86 -99 125 -75 91 -41 49 -523 650 -230 287 -419
+528 -421 535 -3 29 2 37 29 44 40 10 335 159 407 205 17 11 43 27 59 36 16 9
+52 32 80 52 28 19 64 45 81 56 156 109 348 284 478 436 45 52 88 101 95 109
+21 22 114 150 163 226 79 121 90 139 131 215 10 19 22 42 27 50 5 8 28 56 51
+105 23 50 50 107 61 127 10 20 19 43 19 50 0 7 6 24 13 38 13 25 95 278 116
+360 6 25 21 94 32 154 11 60 22 113 24 117 10 15 35 380 35 504 0 159 -22 419
+-45 540 -32 164 -95 409 -120 462 -8 17 -15 38 -15 47 0 9 -9 33 -20 53 -11
+21 -20 45 -20 53 0 9 -6 24 -14 35 -7 11 -17 31 -21 45 -10 32 -88 191 -125
+255 -16 28 -36 64 -44 80 -9 17 -33 55 -53 87 -159 239 -342 450 -528 607 -49
+41 -94 81 -100 87 -5 6 -46 38 -90 70 -196 144 -380 256 -560 343 -49 24 -107
+52 -127 62 -20 10 -43 19 -50 19 -7 0 -30 9 -51 20 -20 11 -44 20 -53 20 -9 0
+-30 7 -47 15 -31 14 -79 29 -177 56 -25 6 -74 20 -109 30 -35 11 -78 19 -94
+19 -16 0 -56 7 -88 15 -119 31 -294 37 -1119 40 -641 3 -840 1 -890 -9z m1790
+-1270 c122 -22 243 -53 302 -77 26 -10 52 -19 59 -19 18 0 193 -83 264 -125
+22 -13 47 -27 55 -31 18 -9 141 -94 156 -108 7 -6 22 -20 35 -30 153 -123 302
+-293 406 -465 66 -109 158 -321 185 -426 6 -22 17 -60 25 -85 7 -25 23 -126
+35 -225 20 -176 20 -184 3 -350 -31 -314 -118 -564 -283 -815 -137 -209 -327
+-397 -537 -535 -121 -80 -274 -154 -445 -215 -19 -7 -64 -19 -100 -26 -36 -8
+-76 -19 -90 -24 -47 -19 -275 -40 -490 -47 -183 -5 -225 -3 -280 11 -78 20
+-126 56 -162 122 -28 49 -28 49 -28 1679 0 1630 0 1630 21 1670 37 70 86 112
+159 136 14 5 158 7 320 5 223 -2 318 -7 390 -20z"/>
+</g></svg></span>
+    UZERX · Consultoria, Formação e Produção, Lda<br>
+    Rua de Angola, 6 · 2765-193 Estoril · Portugal
+  </div>
+  <div class="foot-links">
+    <a href="#servicos">O que fazemos</a>
+    <a href="airframework/">AIR Framework</a>
+    <a href="https://www.linkedin.com/company/uzer-consulting/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div>© <span id="yr">2026</span> UZER Consulting</div>
+</div></footer>
+
+<script>window.SCENES = window.SCENES && ["#heroBg", "#bigz", ".hero h1", ".hero .lead", ".hero .hero-ctas", ".hero .hero-meta", "#servicos .sec-head h2", "#servicos .sec-head > p", "#air .air-mini", "#servicos .svc:not(.feature)", "#metodo .steps", "#metodo .sec-head h2", "#talk2me .t2m .quote", "#equipa .team .photo img", "#equipa .team > div:last-child .person", "#contacto .cta h2", "footer .foot", "#nav"].every(q => document.querySelector(q));</script>
+<script>
+(() => {
+  const nav = document.getElementById("nav");
+  const on = () => nav.classList.toggle("scrolled", scrollY > 12);
+  addEventListener("scroll", on, { passive: true }); on();
+  document.getElementById("yr").textContent = new Date().getFullYear();
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // a entrada inicial usa animação em transform/opacity; depois de acabar, sai para o parallax mandar
+  document.querySelectorAll(".rise").forEach(el => el.addEventListener("animationend", () => el.classList.remove("rise"), { once: true }));
+  if (reduce || window.SCENES) return;
+
+  const hero = document.querySelector(".hero"), heroBg = document.getElementById("heroBg"), bigz = document.getElementById("bigz");
+  const heroLayers = [...hero.querySelectorAll("[data-hero]")].map(el => ({ el, k: +el.dataset.hero }));
+  const bars = [...bigz.querySelectorAll(".zx")].map(el => ({ el, left: el.dataset.side === "L", at: +el.dataset.at }));
+  const EXT = 1500;                                   // quanto cada barra do Z cresce (unidades do viewBox; o Z tem 1410)
+  // contentores grandes: atributos no HTML; elementos pequenos: regras abaixo, cada um com a sua profundidade
+  const cfg = new Map();
+  document.querySelectorAll("[data-y],[data-x],[data-line],[data-reveal],[data-zoom],[data-grow]").forEach(el => cfg.set(el, {
+    y: +el.dataset.y || 0, x: +el.dataset.x || 0, zoom: +el.dataset.zoom || 0,
+    line: el.hasAttribute("data-line"), reveal: el.hasAttribute("data-reveal"), grow: el.hasAttribute("data-grow"),
+  }));
+  const RULES = [
+    [".kicker", () => ({ y: 18 })],
+    [".svc .num", () => ({ y: 20 })],
+    [".svc h3", () => ({ y: 12 })],
+    [".svc > p, .svc > div > p", () => ({ y: 5 })],
+    [".svc li", (i) => ({ y: 8 + (i % 4) * 6, reveal: true })],
+    [".tag-new", () => ({ y: 10 })],
+    [".pill h4", () => ({ y: 8 })],
+    [".pill .row", (i) => ({ x: 14 + (i % 4) * 7, reveal: true })],
+    [".formula", () => ({ y: 16, reveal: true })],
+    [".legend", () => ({ y: 22, reveal: true })],
+    [".step .n", () => ({ y: 22 })],
+    [".step h3", () => ({ y: 12 })],
+    [".step p", () => ({ y: 5 })],
+    [".quote p", () => ({ y: 8 })],
+    [".quote cite", () => ({ y: 14 })],
+    [".person b", () => ({ x: 10 })],
+    [".person span", () => ({ x: -10 })],
+    [".cta h2", () => ({ y: 14 })],
+    [".cta p", () => ({ y: 8 })],
+    [".cta .btn", (i) => ({ y: 10 + i * 8, reveal: true })],
+    [".foot > div", (i) => ({ y: 6 + i * 6, reveal: true })],
+  ];
+  RULES.forEach(([sel, make]) => {
+    // os índices contam por grupo de irmãos (ex.: as chips de cada cartão começam do zero)
+    const counts = new Map();
+    document.querySelectorAll(sel).forEach(el => {
+      if (cfg.has(el) || el.closest(".hero .wrap > h1, .hero .wrap > p")) return;
+      const n = counts.get(el.parentElement) || 0; counts.set(el.parentElement, n + 1);
+      cfg.set(el, Object.assign({ y: 0, x: 0, zoom: 0, line: false, reveal: false, grow: false }, make(n)));
+    });
+  });
+  const blank = () => ({ y: 0, x: 0, zoom: 0, line: false, reveal: false, grow: false });
+  // efeitos criativos por secção
+  document.documentElement.classList.add("js-fx");
+  document.querySelectorAll(".services .svc").forEach(el => { if (cfg.has(el)) cfg.get(el).tilt = true; });          // cartões entram inclinados
+  document.querySelectorAll(".pill").forEach(el => { const c = cfg.get(el); if (c) { c.pill = true; c.dots = [...el.querySelectorAll(".row i")]; } });
+  document.querySelectorAll("section:not(.hero) h2").forEach(h => {                                                   // palavras acendem-se ao ler
+    const words = h.textContent.trim().split(/\s+/);
+    h.textContent = "";
+    words.forEach((w, i) => { const sp = document.createElement("span"); sp.className = "w"; sp.textContent = w; h.append(sp); if (i < words.length - 1) h.append(" "); });
+    const c = cfg.get(h) || blank(); c.words = [...h.querySelectorAll(".w")]; cfg.set(h, c);
+  });
+  const metodo = document.getElementById("metodo");
+  if (metodo) cfg.set(metodo, Object.assign(blank(), { inv: true }));                                                            // Método em negativo
+  const items = [...cfg].map(([el, c]) => Object.assign({ el, top: 0, h: 0 }, c));
+  const metodoIt = items.find(it => it.inv);
+  const clamp = v => Math.min(1, Math.max(0, v));
+  const ease = t => t * t * (3 - 2 * t);
+
+  // posições medidas sem os deslocamentos do parallax, para não haver realimentação
+  const measure = () => {
+    items.forEach(it => { it.el.style.translate = it.el.style.scale = ""; });
+    items.forEach(it => { const r = it.el.getBoundingClientRect(); it.top = r.top + scrollY; it.h = r.height; });
+    frame();
+  };
+
+  const frame = () => {
+    const sy = scrollY, vh = innerHeight, k = innerWidth < 768 ? 0.5 : 1;
+
+    // hero: o texto sobe mais depressa e apaga-se; o brilho e o Z ficam para trás (camadas mais fundas)
+    const hh = hero.offsetHeight;
+    if (sy < hh + vh) {
+      const hp = clamp(sy / hh);
+      heroLayers.forEach(({ el, k: hk }) => { el.style.translate = `0 ${(-sy * hk).toFixed(1)}px`; el.style.opacity = String(1 - clamp(hp * 1.3)); });
+      heroBg.style.translate = `0 ${(sy * 0.25).toFixed(1)}px`;
+      // barras do Z: no topo o Z é o normal; a descer, a de cima estica para a esquerda e a de baixo para a direita.
+      // O corpo do Z não sai do sítio; só fica para trás na vertical para continuar à vista enquanto estica.
+      const d = ease(clamp(sy / (hh * 0.7))) * EXT;
+      bigz.style.translate = `0 ${(sy * 0.62).toFixed(1)}px`;
+      bars.forEach(b => {
+        b.el.setAttribute("width", d > 0.5 ? (d + 6).toFixed(1) : "0");
+        b.el.setAttribute("x", (b.left ? b.at - d : b.at).toFixed(1));
+      });
+    }
+
+    items.forEach(it => {
+      const top = it.top - sy;
+      if (top > vh + 200 || top + it.h < -200) return;            // fora do ecrã: não mexer
+      const c = clamp((vh - top) / (vh + it.h)) - 0.5;            // -0.5 a entrar em baixo … +0.5 a sair em cima
+      const r = ease(clamp((vh - top) / (vh * 0.42)));            // entrada: 0 → 1 até chegar a ~60% do ecrã
+      const ty = -c * 2 * it.y * k + (it.reveal ? (1 - r) * 28 * k : 0);
+      const tx = it.x * (1 - r) * k;
+      if (it.line) { it.el.style.scale = `${(0.12 + 0.88 * r).toFixed(3)} 1`; return; }
+      if (it.zoom) { it.el.style.translate = `0 ${(c * 2 * it.zoom * k).toFixed(1)}px`; it.el.style.scale = String(1.14 - 0.06 * (c + 0.5)); return; }
+      it.el.style.translate = `${tx.toFixed(1)}px ${ty.toFixed(1)}px`;
+      if (it.grow) { it.el.style.scale = String(0.93 + 0.07 * r); it.el.style.setProperty("--cg", r.toFixed(3)); }
+      if (it.reveal) it.el.style.opacity = r.toFixed(3);
+      if (it.tilt) it.el.style.rotate = `x ${((1 - r) * 14).toFixed(2)}deg`;
+      if (it.pill) {
+        it.el.style.setProperty("--l", r.toFixed(3));                                      // o fio néon desenha-se
+        it.dots.forEach((d, i) => d.classList.toggle("on", r > (i + 1) / (it.dots.length + 1)));   // e as bolinhas acendem uma a uma
+      }
+      if (it.words) {
+        const q = clamp((vh * 0.9 - top) / (vh * 0.45)) * (it.words.length + 1);
+        it.words.forEach((w, i) => { w.style.opacity = (0.16 + 0.84 * clamp(q - i)).toFixed(3); });
+      }
+      if (it.inv) {
+        const v = ease(clamp(1.25 - Math.abs(c) * 3.2)); it.v = v;
+        it.el.style.setProperty("--inv", v.toFixed(3));
+        it.el.classList.toggle("inv", v > 0.5);
+      }
+    });
+    const mt = metodoIt ? metodoIt.top - sy : vh;
+    nav.classList.toggle("solid", !!metodoIt && mt < vh && mt + metodoIt.h > 0 && (metodoIt.v || 0) > 0.02);
+    ticking = false;
+  };
+
+  let ticking = false;
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  addEventListener("resize", measure);
+  addEventListener("load", measure);
+  if (document.fonts) document.fonts.ready.then(measure);
+  measure();
+
+  // máquina de escrever: etiquetas das secções e citações do Talk2me (o texto por escrever ocupa o lugar, invisível)
+  const typer = (el, speed) => {
+    const text = el.textContent;
+    const typed = document.createElement("span"), ghost = document.createElement("span");
+    typed.className = "typed"; ghost.className = "ghost"; ghost.textContent = text;
+    el.textContent = ""; el.append(typed, ghost); el.classList.add("tw");
+    return () => {
+      let i = 0;
+      const tick = () => {
+        i += 1; typed.textContent = text.slice(0, i); ghost.textContent = text.slice(i);
+        if (i < text.length) setTimeout(tick, speed); else setTimeout(() => el.classList.add("tw-done"), 1400);
+      };
+      tick();
+    };
+  };
+  const io = new IntersectionObserver(entries => entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    io.unobserve(e.target); setTimeout(e.target._type, e.target._delay || 0);
+  }), { threshold: 0.6 });
+  document.querySelectorAll("section:not(.hero) .kicker").forEach(el => { el._type = typer(el, 45); io.observe(el); });
+  document.querySelectorAll("#talk2me .quote p").forEach((el, i) => { el._type = typer(el, 22); el._delay = i * 300; io.observe(el); });
+
+  // métricas do topo: contam até ao valor
+  document.querySelectorAll(".hero-meta b").forEach((b, i) => {
+    const end = +b.textContent, start = end >= 1000 ? end - 26 : 0, t0 = performance.now() + 500 + i * 140, dur = 1200;
+    b.textContent = String(start);
+    const step = now => { const t = clamp((now - t0) / dur); b.textContent = String(Math.round(start + (end - start) * ease(t))); if (t < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  });
+})();
+
+  /* "cliente": o gradiente deriva devagar e ao acaso, como uma nuvem */
+  const cloud = document.querySelector(".hero .cloud");
+  if (cloud && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const r = (a, b) => (a + Math.random() * (b - a)).toFixed(0);
+    const drift = () => {
+      cloud.style.backgroundPosition = `${r(5,95)}% ${r(10,90)}%, ${r(5,95)}% ${r(10,90)}%, ${r(5,95)}% ${r(10,90)}%, 0 0`;
+      setTimeout(drift, 1900 + Math.random() * 1400);
+    };
+    setTimeout(drift, 150);
+  }
+</script>
+
+<script>
+(() => {
+  if (!window.SCENES) return;
+  const $ = (q, el = document) => el.querySelector(q), $$ = (q, el = document) => [...el.querySelectorAll(q)];
+  const clamp = v => Math.min(1, Math.max(0, v));
+  const lin = t => t;
+  const outExpo = t => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));        // entradas: rápidas e a assentar
+  const outCubic = t => 1 - Math.pow(1 - t, 3);
+  const inCubic = t => t * t * t;                                      // saídas: começam devagar e aceleram
+  const inOut = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const seg = (r, a, b, f = outCubic) => f(clamp((r - a) / (b - a)));
+  document.documentElement.classList.add("scenes", "js-fx");
+
+  // ---------- palco e cenas (os elementos da página são movidos, nada é duplicado nem perdido)
+  const stage = document.createElement("div"); stage.className = "stage"; document.body.prepend(stage);
+  const panel = document.createElement("div"); panel.className = "m-panel"; stage.append(panel);
+  const makeScene = (nodes, id) => {
+    const sc = document.createElement("div"); sc.className = "scene"; sc.dataset.id = id;
+    const needsWrap = nodes.length > 1 || nodes.every(n => !n.classList.contains("wrap") && n.tagName !== "SECTION");
+    const box = needsWrap ? Object.assign(document.createElement("div"), { className: "wrap" }) : sc;
+    nodes.forEach(n => box.append(n)); if (needsWrap) sc.append(box);
+    stage.append(sc); return sc;
+  };
+
+  // ---------- utilitários
+  const typer = (el) => {                                              // máquina de escrever sem mexer no layout
+    if (!el) return () => {};
+    const text = el.textContent, typed = document.createElement("span"), ghost = document.createElement("span");
+    typed.className = "typed"; ghost.className = "ghost"; ghost.textContent = text;
+    el.textContent = ""; el.append(typed, ghost); el.classList.add("tw");
+    let last = -1;
+    return (k) => {
+      const n = Math.round(clamp(k) * text.length);
+      if (n !== last) { typed.textContent = text.slice(0, n); ghost.textContent = text.slice(n); last = n; }
+      el.classList.toggle("tw-done", n === 0 || n === text.length);
+    };
+  };
+  const lighter = (el, base = 0.14) => {                               // palavras que acendem
+    if (!el) return () => {};
+    const words = el.textContent.trim().split(/\s+/); el.textContent = "";
+    const spans = words.map((w, i) => { const sp = document.createElement("span"); sp.textContent = w; el.append(sp); if (i < words.length - 1) el.append(" "); return sp; });
+    return (k) => { const q = clamp(k) * (spans.length + 1); spans.forEach((sp, i) => { sp.style.opacity = (base + (1 - base) * clamp(q - i)).toFixed(3); }); };
+  };
+  const wipe = (el, k, dir = "right", round = 0) => {                  // máscara no sentido da leitura
+    if (!el) return;
+    if (k >= 1) { el.style.clipPath = ""; return; }
+    const v = ((1 - k) * 100).toFixed(2), rr = round ? ` round ${round}px` : "";
+    el.style.clipPath = dir === "right" ? `inset(0 ${v}% 0 0${rr})` : dir === "up" ? `inset(${v}% 0 0 0${rr})` : `inset(0 0 ${v}% 0${rr})`;
+  };
+  const set = (el, { x = 0, y = 0, s = 1, o = 1, rx = 0, blur = 0 } = {}) => {
+    if (!el) return;
+    const st = el.style;
+    st.translate = x || y ? `${x.toFixed(1)}px ${y.toFixed(1)}px` : "";
+    st.scale = s === 1 ? "" : s.toFixed(4);
+    st.opacity = o >= 1 ? "" : Math.max(0, o).toFixed(3);
+    st.rotate = rx ? `x ${rx.toFixed(2)}deg` : "";
+    st.filter = blur > 0.15 ? `blur(${blur.toFixed(2)}px)` : "";
+  };
+  // saída comum: sobe e dissolve-se, em cascata de cima para baixo
+  const outK = (x, i, span = 0.5, step = 0.07) => seg(x, i * step, span + i * step, inCubic);
+
+  // ---------- 1. topo
+  const hero = $(".hero"), heroBg = $("#heroBg"), bigz = $("#bigz");
+  const bars = $$(".zx").map(el => ({ el, left: el.dataset.side === "L", at: +el.dataset.at }));
+  const heroText = [$(".hero h1"), $(".hero .lead"), $(".hero .hero-ctas"), $(".hero .hero-meta")];
+  const TOP = {
+    apply(r, x) {
+      // cada bloco sobe e desaparece contra uma linha invisível no seu próprio topo
+      heroText.forEach((el, i) => {
+        const k = outK(x, i, 0.45, 0.09), T = k * (el.offsetHeight + 10);
+        el.style.translate = T ? `0 ${(-T).toFixed(1)}px` : "";
+        el.style.clipPath = T ? `inset(${T.toFixed(1)}px 0 0 0)` : "";
+      });
+      // as barras do Z esticam e o Z recua em profundidade
+      const d = seg(x, 0, 0.75) * 1500;
+      bars.forEach(b => { b.el.setAttribute("width", d > 0.5 ? (d + 6).toFixed(1) : "0"); b.el.setAttribute("x", (b.left ? b.at - d : b.at).toFixed(1)); });
+      const zk = seg(x, 0.4, 1, inCubic);
+      bigz.style.setProperty("--zfade", (1 - zk).toFixed(3));
+      set(bigz, { s: 1 - zk * 0.28, blur: zk * 6 });
+      heroBg.style.opacity = (1 - seg(x, 0.2, 0.9)).toFixed(3);
+    },
+  };
+
+  // ---------- 2. O que fazemos
+  const sv = { head: $("#servicos .sec-head") };
+  sv.kick = $(".kicker", sv.head); sv.h2 = $("h2", sv.head); sv.p = $(":scope > p", sv.head);
+  const svType = typer(sv.kick), svLight = lighter(sv.h2);
+  const SERV = {
+    apply(r, x) {
+      svType(seg(r, 0, 0.3, lin));
+      const hin = seg(r, 0.05, 0.45, outExpo);
+      svLight(seg(r, 0.15, 0.75, lin));
+      wipe(sv.p, seg(r, 0.45, 0.92, inOut));
+      set(sv.kick, { y: -outK(x, 0) * 70, o: 1 - outK(x, 0) });
+      set(sv.h2, { y: (1 - hin) * 28 - outK(x, 1) * 70, o: hin * (1 - outK(x, 1)) });
+      set(sv.p, { y: -outK(x, 2) * 70, o: 1 - outK(x, 2) });
+    },
+  };
+
+  // ---------- 3. AIR
+  const air = $("#air"), airL = $(":scope > div:first-child", air);
+  const airA = { num: $(".num", airL), h3: $("h3", airL), p: $(":scope > p", airL), chips: $$("li", airL), btn: $(".btn", airL),
+    pills: $$(".pill", air), formula: $(".formula", air), legend: $(".legend", air) };
+  const airNum = typer(airA.num), airFormula = typer(airA.formula);
+  airA.rows = airA.pills.map(pl => $$(".row", pl).map(row => ({ row, dot: $("i", row) })));
+  const AIR = {
+    apply(r, x) {
+      // o cartão levanta-se da mesa
+      const c = seg(r, 0, 0.35, outExpo), X = seg(x, 0, 0.8, inCubic);
+      set(air, { y: (1 - c) * 90 - X * 80, rx: (1 - c) * 14, o: Math.min(1, c * 1.4) * (1 - X), s: 1 - X * 0.03, blur: X * 4 });
+      // coluna do texto: número, título, texto no sentido da leitura, etiquetas, botão
+      airNum(seg(r, 0.16, 0.26, lin));
+      const h = seg(r, 0.2, 0.45, outExpo); set(airA.h3, { y: (1 - h) * 16, o: h });
+      wipe(airA.p, seg(r, 0.3, 0.62, inOut));
+      airA.chips.forEach((li, i) => { const k = seg(r, 0.5 + i * 0.05, 0.64 + i * 0.05, outExpo); set(li, { s: 0.85 + 0.15 * k, o: k }); });
+      const b = seg(r, 0.7, 0.86, outExpo); set(airA.btn, { y: (1 - b) * 10, o: b });
+      // pilares: chegam em sequência, o fio néon desenha-se e as linhas acendem uma a uma (a auditoria a correr)
+      airA.pills.forEach((pl, i) => {
+        const k = seg(r, 0.3 + i * 0.08, 0.55 + i * 0.08, outExpo);
+        set(pl, { y: (1 - k) * 34, o: k });
+        pl.style.setProperty("--l", seg(r, 0.42 + i * 0.08, 0.66 + i * 0.08, inOut).toFixed(3));
+        airA.rows[i].forEach(({ row, dot }, j) => {
+          const a = 0.55 + i * 0.06 + j * 0.04, kr = seg(r, a, a + 0.08, outExpo);
+          set(row, { x: (1 - kr) * -10, o: kr });
+          if (dot) dot.classList.toggle("on", r > a + 0.07);
+        });
+      });
+      airFormula(seg(r, 0.72, 0.9, lin));
+      set(airA.legend, { o: seg(r, 0.88, 0.98) });
+    },
+  };
+
+  // ---------- 4. serviços (grelha): revelados em máscara, por ordem de leitura
+  const cards = $$("#servicos .svc:not(.feature)");
+  const grid = Object.assign(document.createElement("div"), { className: "services" }); cards.forEach(c => grid.append(c));
+  const cardA = cards.map(cd => ({ cd, h3: $("h3", cd), p: $("p", cd), chips: $$("li", cd), num: typer($(".num", cd)) }));
+  const GRID = {
+    apply(r, x) {
+      cardA.forEach(({ cd, h3, p, chips, num }, i) => {
+        const a = i * 0.12, k = seg(r, a, a + 0.38, inOut), X = outK(x, i, 0.55, 0.08);
+        wipe(cd, k, "right", 20);
+        set(cd, { x: (1 - seg(r, a, a + 0.38, outExpo)) * -30, y: -X * 80, o: (k > 0 ? 1 : 0) * (1 - X) });
+        num(seg(r, a + 0.1, a + 0.2, lin));
+        const t = seg(r, a + 0.12, a + 0.4, outExpo); set(h3, { y: (1 - t) * 12, o: t });
+        set(p, { o: seg(r, a + 0.2, a + 0.45) });
+        chips.forEach((li, j) => { const kk = seg(r, a + 0.3 + j * 0.03, a + 0.42 + j * 0.03, outExpo); set(li, { s: 0.85 + 0.15 * kk, o: kk }); });
+      });
+    },
+  };
+
+  // ---------- 5. Método: faixa branca abre do centro; passos da esquerda para a direita com linha de progresso
+  const metodo = $("#metodo"), mHead = $(".sec-head", metodo), nav = $("#nav");
+  const mA = { kick: $(".kicker", mHead), h2: $("h2", mHead), p: $(":scope > p", mHead), steps: $$(".step", metodo) };
+  const mLine = document.createElement("div"); mLine.className = "m-line"; mLine.innerHTML = "<i></i>"; $(".steps", metodo).after(mLine);
+  const mType = typer(mA.kick), mLight = lighter(mA.h2), mNums = mA.steps.map(st => typer($(".n", st)));
+  const METODO = {
+    off() { panel.style.visibility = "hidden"; document.body.classList.remove("invert"); metodo.classList.remove("inv"); nav.classList.remove("solid"); },
+    apply(r, x) {
+      const open = seg(r, 0, 0.3, outExpo) * (1 - seg(x, 0.35, 0.9, inOut));
+      panel.style.visibility = open > 0.001 ? "visible" : "hidden";
+      panel.style.clipPath = `inset(${((1 - open) * 50).toFixed(2)}% 0)`;
+      const inv = open > 0.5; document.body.classList.toggle("invert", inv); metodo.classList.toggle("inv", inv);
+      nav.classList.toggle("solid", open > 0.01);                  // barra preta sólida sobre o branco
+      const X = i => outK(x, i, 0.3, 0.04);                           // o conteúdo sai antes de o painel fechar
+      mType(seg(r, 0.25, 0.42, lin)); set(mA.kick, { y: -X(0) * 50, o: 1 - X(0) });
+      const h = seg(r, 0.28, 0.55, outExpo); mLight(seg(r, 0.32, 0.7, lin));
+      set(mA.h2, { y: (1 - h) * 24 - X(1) * 50, o: h * (1 - X(1)) });
+      wipe(mA.p, seg(r, 0.45, 0.72, inOut)); set(mA.p, { y: -X(2) * 50, o: 1 - X(2) });
+      mA.steps.forEach((st, i) => {
+        const a = 0.55 + i * 0.08, k = seg(r, a, a + 0.17, outExpo);
+        set(st, { y: (1 - k) * 26 - X(3 + i) * 50, o: k * (1 - X(3 + i)) });
+        mNums[i](seg(r, a, a + 0.07, lin));
+      });
+      mLine.style.setProperty("--k", (seg(r, 0.55, 0.95, inOut) * (1 - X(7))).toFixed(3));
+    },
+  };
+
+  // ---------- 6. Talk2me: as citações chegam como mensagens (a escrever…, texto, fonte)
+  const t2m = $("#talk2me .t2m"), tLeft = $(":scope > div:first-child", t2m);
+  const tA = { kick: $(".kicker", tLeft), h2: $("h2", tLeft), p: $("p", tLeft), quotes: $$(".quote", t2m) };
+  const tType = typer(tA.kick), tLight = lighter(tA.h2);
+  const tQ = tA.quotes.map(q => {
+    const dots = document.createElement("span"); dots.className = "t-dots"; dots.innerHTML = "<i></i><i></i><i></i>"; q.prepend(dots);
+    return { q, dots, type: typer($("p", q)), cite: $("cite", q) };
+  });
+  const TALK = {
+    apply(r, x) {
+      tType(seg(r, 0, 0.18, lin)); tLight(seg(r, 0.05, 0.4, lin));
+      const h = seg(r, 0.02, 0.3, outExpo);
+      set(tA.h2, { y: (1 - h) * 24 - outK(x, 1) * 70, o: h * (1 - outK(x, 1)) });
+      set(tA.kick, { y: -outK(x, 0) * 70, o: 1 - outK(x, 0) });
+      wipe(tA.p, seg(r, 0.18, 0.42, inOut)); set(tA.p, { y: -outK(x, 2) * 70, o: 1 - outK(x, 2) });
+      tQ.forEach(({ q, dots, type, cite }, i) => {
+        const a = 0.32 + i * 0.2, arrive = seg(r, a, a + 0.08, outExpo), X = outK(x, 3 + i, 0.5, 0.07);
+        set(q, { x: (1 - arrive) * 48, y: -X * 90, o: arrive * (1 - X) });
+        dots.style.opacity = r > a + 0.02 && r < a + 0.09 ? "1" : "0";
+        type(seg(r, a + 0.08, a + 0.17, lin));
+        set(cite, { o: seg(r, a + 0.16, a + 0.2) });
+      });
+    },
+  };
+
+  // ---------- 7. Equipa: a fotografia revela-se de baixo para cima e assenta; nomes em faixa, cargo escrito
+  const team = $("#equipa .team"), photo = $(".photo", team), img = $("img", photo), eText = $(":scope > div:last-child", team);
+  const eA = { kick: $(".kicker", eText), h2: $("h2", eText), p: $(":scope > p", eText), people: $$(".person", eText) };
+  const eType = typer(eA.kick), eLight = lighter(eA.h2), eRoles = eA.people.map(pr => typer($("span", pr)));
+  const EQUIPA = {
+    apply(r, x) {
+      const k = seg(r, 0, 0.42, inOut), xk = seg(x, 0, 0.7, inCubic);
+      if (xk > 0) photo.style.clipPath = `inset(0 0 ${(xk * 100).toFixed(2)}% 0 round 20px)`; else wipe(photo, k, "up", 20);
+      set(photo, { y: -xk * 40 });
+      img.style.scale = (1.18 - 0.18 * seg(r, 0, 0.7) + xk * 0.06).toFixed(4);
+      eType(seg(r, 0.2, 0.34, lin)); eLight(seg(r, 0.26, 0.6, lin));
+      const h = seg(r, 0.22, 0.5, outExpo);
+      set(eA.kick, { y: -outK(x, 0) * 60, o: 1 - outK(x, 0) });
+      set(eA.h2, { y: (1 - h) * 24 - outK(x, 1) * 60, o: h * (1 - outK(x, 1)) });
+      wipe(eA.p, seg(r, 0.38, 0.62, inOut)); set(eA.p, { y: -outK(x, 2) * 60, o: 1 - outK(x, 2) });
+      eA.people.forEach((pr, i) => {
+        const a = 0.52 + i * 0.1, kk = seg(r, a, a + 0.16, inOut), X = outK(x, 3 + i);
+        wipe(pr, kk, "right", 14);
+        set(pr, { y: -X * 60, o: (kk > 0 ? 1 : 0) * (1 - X) });
+        eRoles[i](seg(r, a + 0.1, a + 0.2, lin));
+      });
+    },
+  };
+
+  // ---------- 8. Contacto: a caixa abre a partir de uma linha e o texto constrói-se
+  const cta = $("#contacto .cta"), foot = $("footer .foot");
+  const cA = { kick: $(".kicker", cta), h2: $("h2", cta), p: $("p", cta), btns: $$(".btn", cta) };
+  const cType = typer(cA.kick), cLight = lighter(cA.h2, 0.12);
+  const CONTACTO = {
+    apply(r) {
+      const open = seg(r, 0, 0.3, outExpo);
+      cta.style.clipPath = open < 1 ? `inset(${((1 - open) * 50).toFixed(2)}% 0 ${((1 - open) * 50).toFixed(2)}% 0 round 28px)` : "";
+      cta.style.opacity = open > 0 ? "" : "0";
+      cType(seg(r, 0.24, 0.42, lin));
+      cLight(seg(r, 0.34, 0.68, lin));
+      const pp = seg(r, 0.6, 0.78, outExpo); set(cA.p, { y: (1 - pp) * 14, o: pp });
+      cA.btns.forEach((b, i) => { const k = seg(r, 0.72 + i * 0.07, 0.86 + i * 0.07, outExpo); set(b, { y: (1 - k) * 18, o: k }); });
+      const g = seg(r, 0.84, 1); cta.style.setProperty("--cg", g.toFixed(3));
+      if (foot) foot.style.opacity = g.toFixed(3);
+    },
+  };
+
+  // ---------- linha do tempo (em ecrãs de scroll): entrada/construção, pausa, saída; a seguinte entra durante a saída
+  const DEF = [
+    { id: "top", nodes: [hero], fx: TOP, len: 0, hold: 0.12, out: 0.9, hand: 0.75 },
+    { id: "servicos", nodes: [sv.head], fx: SERV, len: 0.65, hold: 0.35, out: 0.5, hand: 0.6 },
+    { id: "air", nodes: [air], fx: AIR, len: 1.0, hold: 0.35, out: 0.55, hand: 0.6 },
+    { id: "servicos2", nodes: [grid], fx: GRID, len: 0.8, hold: 0.35, out: 0.55, hand: 0.6 },
+    { id: "metodo", nodes: [metodo], fx: METODO, len: 1.0, hold: 0.35, out: 0.8, hand: 0.92 },
+    { id: "talk2me", nodes: [t2m], fx: TALK, len: 1.1, hold: 0.35, out: 0.55, hand: 0.6 },
+    { id: "equipa", nodes: [team], fx: EQUIPA, len: 0.9, hold: 0.35, out: 0.6, hand: 0.6 },
+    { id: "contacto", nodes: [cta, foot], fx: CONTACTO, len: 0.9, hold: 0.5, out: 0, hand: 0 },
+  ];
+  const scenes = DEF.map(d => Object.assign({ node: makeScene(d.nodes.filter(Boolean), d.id) }, d));
+
+  const measure = () => {
+    const vh = innerHeight;
+    let t = 0;
+    scenes.forEach((sc, i) => {
+      sc.box = sc.node.firstElementChild; sc.box.style.translate = ""; sc.node.style.alignItems = "";
+      const cs = getComputedStyle(sc.node), avail = vh - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+      sc.over = Math.max(0, sc.box.scrollHeight - avail);
+      if (sc.over) sc.node.style.alignItems = "flex-start";
+      sc.t0 = i === 0 ? 0 : t; sc.tIn = sc.t0 + sc.len * vh; sc.tOut = sc.tIn + sc.hold * vh + sc.over; sc.t1 = sc.tOut + sc.out * vh;
+      t = sc.tOut + sc.out * vh * sc.hand;
+    });
+    document.body.style.height = (scenes[scenes.length - 1].tOut + vh) + "px";
+    frame();
+  };
+
+  const dots = document.createElement("div"); dots.className = "scene-dots"; dots.innerHTML = scenes.map(() => "<i></i>").join(""); document.body.append(dots);
+
+  const frame = () => {
+    const y = scrollY, vh = innerHeight;
+    let cur = 0;
+    scenes.forEach((sc, i) => {
+      const last = i === scenes.length - 1, on = y >= sc.t0 - 2 && (last || y <= sc.t1 + 2);
+      if (y >= sc.t0) cur = i;
+      sc.node.style.visibility = on ? "visible" : "hidden";
+      if (!on) { if (sc.wasOn) sc.fx.off?.(); sc.wasOn = false; return; }
+      sc.wasOn = true;
+      const r = sc.len ? clamp((y - sc.t0) / (sc.len * vh)) : 1;
+      const x = last ? 0 : clamp((y - sc.tOut) / (sc.out * vh));
+      if (sc.over) {                                                   // cena mais alta do que o ecrã: sobe enquanto se constrói e na pausa
+        const a = sc.t0 + sc.len * vh * 0.4;
+        sc.box.style.translate = `0 ${(-sc.over * clamp((y - a) / (sc.tOut - a))).toFixed(1)}px`;
+      }
+      sc.fx.apply(r, x);
+    });
+    [...dots.children].forEach((d, k) => d.classList.toggle("on", k === cur));
+    ticking = false;
+  };
+  let ticking = false;
+  addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
+  addEventListener("resize", measure);
+
+  // menu: saltar para a cena já construída
+  const map = { "#top": "top", "#servicos": "servicos", "#air": "air", "#metodo": "metodo", "#talk2me": "talk2me", "#equipa": "equipa", "#contacto": "contacto" };
+  $$('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
+    const sc = scenes.find(s => s.id === map[a.getAttribute("href")]); if (!sc) return;
+    e.preventDefault(); scrollTo({ top: Math.max(0, sc.tIn), behavior: "smooth" });
+  }));
+  if (document.fonts) document.fonts.ready.then(measure);
+  measure();
+  const goHash = () => { const sc = scenes.find(s => s.id === map[location.hash]); if (sc) scrollTo({ top: Math.max(0, sc.tIn), behavior: "instant" }); };
+  if (location.hash) setTimeout(goHash, 0);
+})();
+</script>
+</body>
+</html>
